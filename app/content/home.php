@@ -17,7 +17,7 @@ return [
     'Non sono qui per dare risposte. Sono qui per fare domande, ascoltare e lasciare spazio a ogni storia.',
     'Perché a volte, per guardare la realtà in modo diverso, basta ascoltare qualcuno che l’ha vissuta da un’altra prospettiva.'
 ],
-'fatti'=>['Premiata due anni di fila tra le prime tre microinfluencer','Top creator da Speekly','ADV per i brand'],
+'fatti'=>['Top Creator Speekly 2025','Selezione UGC Feedspot 2026','ADV per i brand'],
 'passi'=>[
 ['Ti candidi','Rispondi a poche domande e scrivi la tua storia con le tue parole. Bastano pochi minuti.'],
 ['Me la mandi su WhatsApp','Alla fine si apre WhatsApp con il messaggio già pronto: devi solo premere invio.'],

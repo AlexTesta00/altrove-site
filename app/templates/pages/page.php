@@ -47,7 +47,12 @@
 <?php require __DIR__.'/../partials/episodes.php'; require __DIR__.'/../partials/faq.php'; require __DIR__.'/../partials/invito.php'; ?>
 <?php elseif($id==='alessia'): ?>
 <section class="page-hero"><h1 class="serif h1">Sono Alessia Ventura. <span class="mute">Dall’altra parte ci sono io.</span></h1></section>
-<section class="sec voce alessia-story"><?php require __DIR__.'/../partials/portrait.php'; ?><div class="vt"><?php foreach(require $config['root'].'/content/alessia.php' as [$heading,$paragraph]): ?><section class="reading-section"><h2 class="serif"><?= e($heading) ?></h2><p><?= e($paragraph) ?></p></section><?php endforeach; ?><ul class="facts"><?php foreach($home['fatti'] as $fact): ?><li><?= e($fact) ?></li><?php endforeach; ?></ul><div class="fl"><a href="https://www.instagram.com/alessia.ventura23/">Instagram</a><a href="https://www.youtube.com/@altrovepodcast">YouTube</a></div></div></section>
+<section class="sec voce alessia-story"><?php require __DIR__.'/../partials/portrait.php'; ?><div class="vt">
+<?php foreach(require $config['root'].'/content/alessia.php' as $section): [$heading,$paragraph]=$section; ?>
+<section class="reading-section"><h2 class="serif"><?= e($heading) ?></h2><p><?= e($paragraph) ?></p>
+<?php if(!empty($section['sources'])): ?><div class="fl"><?php foreach($section['sources'] as [$label,$url]): ?><a href="<?= e($url) ?>"><?= e($label) ?></a><?php endforeach; ?></div><?php endif; ?>
+</section><?php endforeach; ?>
+<ul class="facts"><?php foreach($home['fatti'] as $fact): ?><li><?= e($fact) ?></li><?php endforeach; ?></ul><div class="fl"><a href="https://www.instagram.com/alessia.ventura23/">Instagram</a><a href="https://www.youtube.com/@altrovepodcast">YouTube</a></div></div></section>
 <?php require __DIR__.'/../partials/invito.php'; ?>
 <?php elseif(in_array($id,['privacy','cookie'],true)): ?>
 <!-- Bozza informativa da verificare con un professionista prima della pubblicazione. -->
