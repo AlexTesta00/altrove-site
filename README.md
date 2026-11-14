@@ -12,7 +12,7 @@ Servono PHP 8.2+ (hosting previsto PHP 8.3), Node 24 LTS e npm. Estensioni PHP: 
 
 1. Esegui npm ci e npm run build.
 2. Esegui php tools/configura-locale.php. Crea .env fuori da public/ con segreti casuali locali e numero WhatsApp approvato. Se .env esiste, lo script si ferma: integra le variabili mancanti a mano, senza sostituire credenziali già presenti.
-3. Avvia php -S localhost:8000 -t public.
+3. Avvia php -S localhost:8000 -t public tools/serve.php. Il router esplicito gestisce la sitemap anche sul server PHP di sviluppo Linux; gli asset statici restano serviti direttamente.
 4. Apri http://localhost:8000. Il passaggio a WhatsApp non invia messaggi da solo.
 
 Su questo computer PHP è presente senza un php.ini globale: è stato predisposto .runtime/php.ini, ignorato da Git, con le estensioni installate. Qui i comandi PHP diventano php -c .runtime/php.ini …, compreso il server. Su altre macchine usa il tuo php.ini e verifica con php -m.

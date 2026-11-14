@@ -32,7 +32,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
   base='http://localhost:'+port;
   const args=[];
   try{await access(resolve(root,'.runtime/php.ini'));args.push('-c',resolve(root,'.runtime/php.ini'));}catch{}
-  args.push('-S','localhost:'+port,'-t','public');
+  args.push('-S','localhost:'+port,'-t','public','tools/serve.php');
   server=spawn(process.env.PHP_BINARY||'php',args,{cwd:root,env:{...process.env,APP_ENV:'local',APP_URL:base,APP_SECRET:secret,IP_SALT:salt,WHATSAPP_NUMBER:'393272433925',YOUTUBE_CHANNEL_ID:'',BACKUP_PUBLIC_KEY:'',TURNSTILE_SITE_KEY:'',TURNSTILE_SECRET:'',UMAMI_WEBSITE_ID:''},stdio:'ignore'});
   try {
     for(let i=0;i<100;i++){try{await fetch(base);break;}catch{await pause(100);}}
@@ -50,8 +50,12 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
         assert.equal(response.headers.get('x-content-type-options'),'nosniff');
         if(path==='/grazie/')assert.match(html,/noindex, follow/);
       }
-      const sitemap=await (await fetch(base+'/sitemap.xml')).text();
+      const sitemapResponse=await fetch(base+'/sitemap.xml');
+      assert.equal(sitemapResponse.status,200);
+      const sitemap=await sitemapResponse.text();
       assert.match(sitemap,/<urlset/);assert.doesNotMatch(sitemap,/\/grazie\//);
+      const robots=await fetch(base+'/robots.txt');
+      assert.equal(robots.status,200);assert.match(await robots.text(),/User-agent/);
       assert.equal((await fetch(base+'/inesistente/')).status,404);
       assert.equal((await fetch(base+'/candidati',{redirect:'manual'})).status,301);
     });
