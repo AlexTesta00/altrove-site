@@ -1,4 +1,4 @@
-import { mkdir, readFile, writeFile, copyFile } from 'node:fs/promises';
+import { mkdir, readFile, writeFile, copyFile, access } from 'node:fs/promises';
 import { join } from 'node:path';
 import { createHash } from 'node:crypto';
 import sharp from 'sharp';
@@ -86,6 +86,16 @@ export async function buildAssets(root) {
   await writeFile(join(dirs.licenses, 'ogl.txt'), 'OGL 1.0.11 — Nathan Gordon\nhttps://github.com/oframe/ogl\n\n' + license);
 
   const photo = join(root, 'foto/web/alessia-ventura.jpg');
+  const creatorPhoto = join(root, 'src/images/alex-testa.jpg');
+  const hasCreatorPhoto = await access(creatorPhoto).then(()=>true,()=>false);
+  if (hasCreatorPhoto) {
+    const origin = 'Fonte: fotografia fornita da Alex Testa per il credito del sito e il profilo Instagram @alextesta._. Crop quadrato e conversione tecnica; nessuna generazione del soggetto.';
+    for (const width of [160, 320]) for (const format of ['avif', 'webp']) {
+      const file = join(dirs.images, `alex-testa-${width}.${format}`);
+      await provenance(sharp(creatorPhoto).rotate().resize(width, width, {fit:'cover', position:'attention'}), origin).toFormat(format, {quality:format==='avif'?55:84}).toFile(file);
+      await record(file, 'src/images/alex-testa.jpg', `crop quadrato, ${width}px, ${format}`, origin);
+    }
+  }
   const photoMeta = await sharp(photo).metadata();
   const cropHeight = Math.floor(Math.min(photoMeta.height, photoMeta.width / 0.8) / 5) * 5;
   const cropWidth = cropHeight * 4 / 5;

@@ -55,8 +55,11 @@
 <ul class="facts"><?php foreach($home['fatti'] as $fact): ?><li><?= e($fact) ?></li><?php endforeach; ?></ul><div class="fl"><a href="https://www.instagram.com/alessia.ventura23/">Instagram</a><a href="https://www.youtube.com/@altrovepodcast">YouTube</a></div></div></section>
 <?php require __DIR__.'/../partials/invito.php'; ?>
 <?php elseif(in_array($id,['privacy','cookie'],true)): ?>
-<!-- Bozza informativa da verificare con un professionista prima della pubblicazione. -->
-<section class="page-hero reading"><h1 class="serif h1"><?= e($page['h1']) ?></h1></section><div class="reading long-copy"><?php foreach(require $config['root'].'/content/'.$id.'.php' as [$heading,$paragraph]): ?><section class="reading-section"><h2 class="serif"><?= e($heading) ?></h2><p><?= e($paragraph) ?></p></section><?php endforeach; ?><p><a href="/<?= $id==='privacy'?'cookie':'privacy' ?>/"><?= $id==='privacy'?'Cookie e servizi esterni':'Informativa privacy' ?></a></p></div>
+<section class="page-hero reading"><h1 class="serif h1"><?= e($page['h1']) ?></h1><p class="small">Ultimo aggiornamento: <time datetime="<?= e(Altrove\Privacy::VERSION) ?>">15 novembre 2026</time>.</p></section>
+<div class="reading long-copy"><?php foreach(require $config['root'].'/content/'.$id.'.php' as $section): [$heading,$paragraph]=$section; ?>
+<section class="reading-section"><h2 class="serif"><?= e($heading) ?></h2><p><?= e($paragraph) ?></p>
+<?php if(!empty($section['sources'])): ?><ul class="policy-links"><?php foreach($section['sources'] as [$label,$url]): ?><li><a href="<?= e($url) ?>"><?= e($label) ?></a></li><?php endforeach; ?></ul><?php endif; ?>
+</section><?php endforeach; ?><p><a href="/<?= $id==='privacy'?'cookie':'privacy' ?>/"><?= $id==='privacy'?'Cookie e servizi esterni':'Informativa privacy' ?></a></p></div>
 <?php else: ?>
 <section class="page-hero"><h1 class="serif h1">Questa frequenza <span class="mute">è muta.</span></h1><p class="lead">La pagina che cerchi non è qui. Sintonizzati su una delle storie di Altrove, oppure raccontami la tua.</p><?php require __DIR__.'/../partials/tuner.php'; ?><a class="cta" href="/candidati/"><span class="disc"><?= icon('mic') ?></span>Candidati</a></section>
 <?php endif; ?>

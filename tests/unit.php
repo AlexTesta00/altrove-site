@@ -1,6 +1,6 @@
 <?php
 declare(strict_types=1);
-foreach (['Validator','Csrf','RateLimit','Backup','Router','Log','WhatsAppMessage'] as $class) require dirname(__DIR__).'/app/lib/'.$class.'.php';
+foreach (['Validator','Csrf','RateLimit','Backup','Router','Log','Privacy','WhatsAppMessage'] as $class) require dirname(__DIR__).'/app/lib/'.$class.'.php';
 use Altrove\{Validator,Csrf,RateLimit,Backup,Router};
 $count=0;
 $assert=static function(bool $result,string $message) use(&$count): void { if(!$result)throw new RuntimeException($message); $count++; };
@@ -14,6 +14,8 @@ try {
     $assert($data['telefono']==='+393331234567','Normalizzazione E164 errata');
     $message=Altrove\WhatsAppMessage::build($data);
     $assert(str_contains($message['text'],$data['esperienza']),'Storia troncata nel messaggio');
+    $assert(str_contains($message['text'],Altrove\Privacy::CONSENT),'Consenso esplicito assente nel messaggio consegnato alla persona');
+    $assert(str_contains($message['text'],Altrove\Privacy::VERSION),'Versione informativa assente dal messaggio');
     $assert(!str_contains($message['text'],'appena inviato'),'Il messaggio dichiara un invio inesistente');
     $assert($message['blocks'][4]['value']==='Esperienze di pre-morte','Etichetta tema non leggibile');
     $long=$data;

@@ -14,7 +14,7 @@ final class WhatsAppMessage {
             ['title'=>$emoji.' Tema','value'=>$theme],
             ['title'=>'📖 La mia storia','value'=>$data['esperienza']],
             ['title'=>'📞 Telefono','value'=>$data['telefono']],
-            ['title'=>'','value'=>"Ho letto l'informativa privacy e ho acconsentito al trattamento dei dati per la candidatura."],
+            ['title'=>'','value'=>Privacy::CONSENT . ' Informativa: ' . Privacy::VERSION . '.'],
             ['title'=>'','value'=>"Grazie per l'ascolto ✨"],
         ];
         $text=implode("\n\n",array_map(static function(array $block): string {

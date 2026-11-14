@@ -10,7 +10,7 @@ return ['invitoTitolo' => 'Racconta la tua storia. Potresti essere il prossimo o
 'Ogni proposta sarà valutata individualmente dalla redazione.'],
 'nota' => 'La candidatura non comporta alcun obbligo economico né garantisce la partecipazione al podcast.',
 'selezione' => 'Non tutte le storie diventano una puntata. Le leggo tutte, una per una, e ti ricontatto io.',
-'consenso' => 'Ho letto l\'informativa privacy e acconsento al trattamento dei dati che racconto, anche relativi alla salute e alle convinzioni personali, per essere ricontattato/a per il podcast.',
+'consenso' => Altrove\Privacy::CONSENT,
 'temi' => ['esperienze-pre-morte' => 'Esperienze di pre-morte',
 'medium-e-sensitivi' => 'Medium e sensitivi',
 'channeling-e-coscienza-stellare' => 'Channeling e coscienza stellare',

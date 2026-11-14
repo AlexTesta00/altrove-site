@@ -51,7 +51,7 @@ if (!Turnstile::verify($config, $string('cf-turnstile-response'))) $respond(422,
 if ($errors) $respond(422, $errors, $old);
 if ($config['whatsapp'] === '') $respond(503, ['form'=>'Il contatto WhatsApp non è ancora disponibile. Riprova più tardi.'], $old);
 $data['data'] = date('c');
-$data['informativa'] = '2026-11-14';
+$data['informativa'] = Altrove\Privacy::VERSION;
 $data['stato'] = 'preparata_per_whatsapp_non_inviata';
 $backupSaved = $config['backup_key'] !== '' && Backup::save($config, $data);
 $_SESSION['handoff'] = WhatsAppMessage::build($data) + ['expires'=>time()+900, 'backup'=>$backupSaved];
