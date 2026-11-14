@@ -1,6 +1,6 @@
 <?php
 return [
-'hero'=>['La linea è aperta.','Raccontami cosa hai visto oltre.'],
+'hero'=>['La linea è aperta.','Raccontami cosa hai visto altrove.'],
 'lead'=>"Esperienze di pre-morte, medianità, channeling, ipnosi. Se l'hai vissuto, ad Altrove c'è posto per la tua voce.",
 'hint'=>'Rispondi a poche domande e la tua storia mi arriva su WhatsApp. La leggo io, con calma.',
 'frequenze'=>[
@@ -9,9 +9,15 @@ return [
     ['id'=>'channeling','slug'=>'channeling-e-coscienza-stellare','short'=>'Channeling','name'=>'Channeling e coscienza stellare','description'=>'Guide, energie, memorie che arrivano da lontano. Aiutami a trovare le parole per chi ascolta.','keywords'=>['channeling','channeler','coscienza stellare']],
     ['id'=>'mentalismo','slug'=>'mentalismo-e-ipnosi','short'=>'Ipnosi','name'=>'Mentalismo e ipnosi','description'=>'La mente oltre i suoi confini: ipnosi, mentalismo, stati di coscienza. Mostraci come funziona davvero.','keywords'=>['ipnosi','mentalismo']]
 ],
-'alessia'=>"Sono Alessia Ventura. Lavoro online da dieci anni, racconto storie per i brand e sono mamma di tre bambini. Ho aperto Altrove per ascoltare chi era tornato da un'esperienza di pre-morte. Da allora le storie arrivano da sole.",
-'fatti'=>['Premiata due anni di fila tra le prime tre microinfluencer','Premiata come UGC creator','ADV per i brand'],
-'prova'=>'Ogni puntata parte da una persona, dalla sua esperienza e dalla voglia di ascoltarla.',
+'presentazione_titolo'=>['Ci sono storie','che meritano di essere ascoltate.'],
+'alessia'=>[
+    'Sono Alessia Ventura, content creator, ideatrice e voce di ALTROVE.',
+    'Ho creato questo spazio per dare voce a esperienze che spesso restano inascoltate. Storie di persone che hanno vissuto qualcosa di straordinario, che hanno attraversato confini difficili da spiegare e che, tornando, avevano qualcosa da raccontare.',
+    'Tutto è iniziato con le esperienze di pre-morte. Ma ALTROVE è diventato molto di più: un viaggio tra testimonianze, esperienze fuori dall’ordinario e racconti che aprono nuove domande sul mondo che conosciamo.',
+    'Non sono qui per dare risposte. Sono qui per fare domande, ascoltare e lasciare spazio a ogni storia.',
+    'Perché a volte, per guardare la realtà in modo diverso, basta ascoltare qualcuno che l’ha vissuta da un’altra prospettiva.'
+],
+'fatti'=>['Premiata due anni di fila tra le prime tre microinfluencer','Top creator da Speekly','ADV per i brand'],
 'passi'=>[
 ['Ti candidi','Rispondi a poche domande e scrivi la tua storia con le tue parole. Bastano pochi minuti.'],
 ['Me la mandi su WhatsApp','Alla fine si apre WhatsApp con il messaggio già pronto: devi solo premere invio.'],
