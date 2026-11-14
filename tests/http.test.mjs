@@ -11,11 +11,11 @@ const secret=randomBytes(32).toString('hex');
 const salt=randomBytes(32).toString('hex');
 let server, base;
 const cookies=new Set();
-async function form() {
-  const response=await fetch(base+'/candidati/');
+async function form(path='/candidati/', cookieHeader='') {
+  const response=await fetch(base+path,{headers:cookieHeader?{Cookie:cookieHeader}:{}});
   assert.equal(response.status,200);
   const html=await response.text();
-  const cookie=response.headers.get('set-cookie').split(';')[0];
+  const cookie=response.headers.get('set-cookie')?.split(';')[0]||cookieHeader;
   cookies.add(cookie.split('=')[1]);
   return { cookie, csrf:html.match(/name="csrf" value="([^"]+)"/)[1], stamp:html.match(/name="stamp" value="([^"]+)"/)[1], html };
 }
@@ -68,7 +68,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       assert.match(restored,/La pagina è scaduta/);
       assert.equal((await submit(session,{stamp:session.stamp})).status,422);
       assert.equal((await submit(session,{sito_web:'https://spam.example'})).status,200);
-      assert.equal((await submit(session,{esperienza:'x'.repeat(17000)})).status,413);
+      assert.equal((await submit(session,{esperienza:'x'.repeat(66000)})).status,413);
       assert.equal((await fetch(base+'/api/candidatura',{method:'POST',headers:{Origin:base,'Content-Type':'application/json'},body:'{}'})).status,415);
     });
     await t.test('Errori campo e nessun dato personale in URL',async()=>{
@@ -99,11 +99,46 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       cookies.add(cookie.split('=')[1]);
       const preview=await (await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
       assert.match(preview,/Maria Prova/);
-      assert.match(preview,/Apri la candidatura su WhatsApp/);
+      assert.match(preview,/Apri WhatsApp e invia/);
     });
     await t.test('Limite tentativi: blocco dal quarto, quindi anche il sesto',async()=>{
       const session=await form();
       for(let i=0;i<3;i++)assert.equal((await submit(session)).status,429);
+    });
+    await t.test('Tema preselezionato e nessun contatto WhatsApp prima del finale',async()=>{
+      const session=await form('/candidati/?tema=medium');
+      assert.match(session.html,/name="tema" id="tema-medium" value="medium" checked/);
+      for(const path of ['/','/candidati/','/privacy/','/cookie/','/alessia-ventura/']){
+        const html=await(await fetch(base+path)).text();
+        assert.doesNotMatch(html,/href="https:\/\/wa\.me\//,path);
+      }
+    });
+    await t.test('Storia completa Unicode, copia per URL lunghi e honeypot senza dati precedenti',async()=>{
+      for(const ip of ['::1','127.0.0.1']){
+        const hash=createHmac('sha256',salt).update(ip).digest('hex');
+        await unlink(resolve(root,'app/storage/ratelimit',hash+'.json')).catch(()=>{});
+      }
+      const longStory='🌙漢é '.repeat(1000);
+      assert.equal([...longStory].length,4000);
+      const session=await form();
+      const response=await submit(session,{esperienza:longStory});
+      assert.equal(response.status,200);
+      const result=await response.json();
+      assert.equal(result.copyRequired,true);
+      assert.ok(decodeURIComponent(result.whatsapp).includes(longStory.trim()));
+      const cookie=response.headers.get('set-cookie')?.split(';')[0]||session.cookie;
+      cookies.add(cookie.split('=')[1]);
+      const preview=await(await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
+      assert.match(preview,/Copia il messaggio completo/);
+      assert.ok(preview.includes(longStory.trim()));
+      const refreshed=await form('/candidati/',cookie);
+      assert.equal((await submit(refreshed,{esperienza:longStory+'x'})).status,422);
+      const honey=await submit(refreshed,{sito_web:'bot'});
+      assert.equal(honey.status,200);
+      const honeyResult=await honey.json();
+      assert.equal(honeyResult.copyRequired,false);
+      const honeyPreview=await(await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
+      assert.ok(!honeyPreview.includes(longStory.trim()));
     });
   } finally {
     server?.kill();

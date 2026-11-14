@@ -1,10 +1,10 @@
-# Altrove · fondamenta del sito
+# Altrove · Linea aperta
 
-Sito PHP di Alessia Ventura e Altrove Podcast, destinato ad **altrove.space**. Repository esistente: [AlexTesta00/altrove-site](https://github.com/AlexTesta00/altrove-site). Questa consegna prepara i file e il deploy: non esegue pubblicazioni.
+Sito PHP di Alessia Ventura e Altrove Podcast, destinato ad **altrove.space**. Repository: [AlexTesta00/altrove-site](https://github.com/AlexTesta00/altrove-site). Il workflow verifica il codice e distribuisce il sito su Hostinger a ogni push a main.
 
 La decisione aggiornata dell’utente sostituisce l’invio email del prompt iniziale: il modulo prepara un messaggio per **WhatsApp**, indirizzato al numero configurato in ambiente. Chi si candida lo rilegge e preme **Invia dentro WhatsApp**. Il sito non può attestare la consegna del messaggio. Non usa SMTP, PHPMailer, servizi di invio automatico o database.
 
-La veste è volutamente neutra, scura e leggibile. Il design approvato “Linea aperta”, i font Tenor Sans/Hanken Grotesk e lo sfondo animato appartengono al prompt 03. Il form vive su /candidati/; le altre pagine hanno la sezione di invito con i testi approvati, senza ripetere il modulo.
+Il design approvato “Linea aperta” usa Tenor Sans/Hanken Grotesk, un cielo animato e un sintonizzatore sui quattro temi. Il form vive su /candidati/; le altre pagine hanno la sezione di invito con i testi approvati, senza ripetere il modulo. I prezzi sono riservati alla proposta commerciale privata.
 
 ## Avvio locale
 
@@ -23,13 +23,13 @@ APP_ENV=local è ammesso solo con APP_URL che punta a localhost/127.0.0.1. In lo
 
 - public/: unica webroot; router, endpoint, asset compilati, robots e manifest.
 - app/: configurazione, librerie, contenuti in italiano, template, pulizia e storage privato.
-- src/: CSS Tailwind v4 e moduli JavaScript; gli effetti hanno un punto di estensione inattivo.
+- src/: CSS Tailwind v4 e moduli JavaScript per form, sintonia e movimento.
 - tools/: build immagini/CSS/JS e utilità locali per le chiavi; mai da pubblicare.
 - tests/: test unitari PHP e test HTTP senza dipendenze di test.
 - analisi/: ricerca e proposta commerciale privata; mai nella webroot.
 - .github/workflows/deploy.yml: verifica e distribuzione incrementale tramite FTPS.
 
-La build produce CSS e JavaScript minificati con hash e manifest PHP, immagini AVIF/WebP responsive, JPEG di riserva, favicon ICO/SVG/PNG e OG 1200×630. Le derivazioni usano foto/web/alessia-ventura.jpg, design/brand/favicon.svg e design/brand/og-sfondo.jpg senza modificare gli originali. L’OG è una composizione provvisoria comune alle pagine, da affinare nel prompt 03. In questa fase i font sono di sistema, quindi nessuna richiesta a Google Fonts o preload inutile.
+La build produce CSS e JavaScript minificati con hash e manifest PHP, immagini AVIF/WebP responsive, favicon ICO/SVG/PNG e OG 1200×630 specifiche per pagina. Le derivazioni usano foto/web/alessia-ventura.jpg, design/brand/favicon.svg e design/brand/og-sfondo.jpg senza modificare gli originali. Font WOFF2 e relative licenze sono ospitati localmente; non vengono richiesti font a Google.
 
 ## Variabili di ambiente
 
@@ -54,15 +54,15 @@ Il numero e la partita IVA sono dati pubblici, non credenziali. I token e i segr
 
 ## Candidatura e sicurezza
 
-Ordine dei controlli: metodo POST; Content-Type URL-encoded; corpo entro 16 KB; Origin o Referer confrontato con APP_URL (schema, host, porta); token CSRF di sessione; honeypot; timestamp HMAC tra tre secondi e due ore; limite IP; Turnstile se configurato; validazione e normalizzazione Unicode; preparazione messaggio.
+Ordine dei controlli: metodo POST; Content-Type URL-encoded; corpo entro 64 KB; Origin o Referer confrontato con APP_URL (schema, host, porta); token CSRF di sessione; honeypot; timestamp HMAC tra tre secondi e due ore; limite IP; Turnstile se configurato; validazione e normalizzazione Unicode; preparazione messaggio.
 
 Il limite è **tre tentativi ogni dieci minuti e dieci nelle ventiquattro ore**, con blocco dal quarto tentativo ravvicinato: quindi anche il sesto è bloccato. Conta anche i tentativi arrivati alla validazione che non superano i campi obbligatori. Il file è bloccato con flock; l’IP diretto REMOTE_ADDR viene pseudonimizzato con HMAC. Il codice non si fida di X-Forwarded-For arbitrari: se si mette un proxy davanti al sito, configurare correttamente gli IP reali a livello di server, senza accettare header non verificati.
 
-Il limite di 4.000 caratteri della storia convive con il limite di 16 KB del corpo HTTP: testi molto ricchi di caratteri multibyte possono raggiungere prima il limite in byte del modulo URL-encoded.
+La storia ammette 4.000 codepoint Unicode; il limite di 64 KB del corpo comprende l’espansione URL-encoded, anche per caratteri multibyte ed emoji.
 
 Con JavaScript, cinque passi progressivi, errori per campo e regione live; dopo la validazione si apre il collegamento WhatsApp con il testo precompilato. Senza JavaScript, tutti i campi sono visibili e il POST risponde 303 a /grazie/, dove si può rileggere il testo e premere il collegamento WhatsApp. Nessun dato personale viene messo negli URL interni. Il collegamento **esterno** wa.me contiene necessariamente il messaggio e lo comunica a WhatsApp quando viene aperto: questo è spiegato prima dell’azione e in privacy.
 
-Turnstile richiede JavaScript: se attivato, un visitatore senza JavaScript deve usare il contatto WhatsApp diretto. Le chiavi sono entrambe necessarie. La risposta viene verificata lato server, inclusi hostname e action=candidatura. Non sono installate chiavi di test nel repository.
+Turnstile richiede JavaScript: se attivato, il form informa il visitatore che deve abilitarlo per proseguire. Le chiavi sono entrambe necessarie. La risposta viene verificata lato server, inclusi hostname e action=candidatura. Non sono installate chiavi di test nel repository.
 
 Il messaggio preparato è disponibile per quindici minuti; lo stato di sessione resta sul server fino alla scadenza tecnica massima di due ore e alla pulizia periodica. La sessione non è una conferma di consegna. Il consenso ha versione dell’informativa e data nella copia opzionale e nel testo preparato; una futura pubblicazione della storia richiede un’autorizzazione separata.
 
@@ -91,15 +91,27 @@ Lo script è eseguibile solo da CLI e rimuove copie oltre novanta giorni, record
 
 Il canale [Altrove Podcast](https://www.youtube.com/channel/UCFj4xNoHNyjg0OPDFM0BvLg) è stato verificato il 14 novembre 2026. Il feed pubblico espone le ultime pubblicazioni e può includere Shorts; non è un archivio completo né fornisce la durata di ogni video.
 
-La cache dura sei ore. Su guasto si conserva l’ultima cache, con timeout breve e backoff per evitare ritardi a ogni visita; senza cache la sezione non compare. Il parsing XML disabilita la rete e rifiuta DTD/entità. Il filtro tematico usa soltanto parole dei titoli. Miniature da i.ytimg.com; il player youtube-nocookie viene creato solo al clic. Senza JavaScript il collegamento apre la puntata su YouTube.
+La cache dura sei ore. Su guasto si conserva l’ultima cache, con timeout breve e backoff per evitare ritardi a ogni visita. Il parsing XML disabilita la rete e rifiuta DTD/entità. Il filtro tematico usa soltanto parole dei titoli. Gli elementi identificati dal feed come Shorts vengono esclusi dalle puntate. La home mostra fino a cinque video ordinati per le visualizzazioni effettive del feed; un dato assente rimane sconosciuto. Questa selezione non rappresenta l’intero archivio del canale. Miniature da i.ytimg.com; il player youtube-nocookie viene creato solo al clic. Senza JavaScript il collegamento apre la puntata su YouTube.
 
-Nel runtime PHP locale la catena dei certificati CA non è configurata: il collegamento live cURL è fallito in modo sicuro, senza disattivare TLS. Verificare il bundle CA sul PHP di Hostinger; il feed ufficiale è stato verificato separatamente dal coordinatore.
+Nel runtime PHP locale la catena dei certificati CA non è configurata: il collegamento live cURL è fallito in modo sicuro, senza disattivare TLS. La cache di anteprima è stata inizializzata dal feed ufficiale con `tools/bootstrap-youtube.ps1`, che usa il trust store del sistema operativo. Lo script CLI PHP valida XML e ID del canale. Verificare il bundle CA sul PHP di Hostinger.
+
+## Design Linea aperta
+
+Tutte le pagine condividono il fondo notte, Tenor Sans e Hanken Grotesk ospitati localmente, i controlli a capsula e la scala del sintonizzatore. La home riprende il prototipo approvato: quattro temi, puntate YouTube, Alessia, Instagram, percorso e candidatura. Il numero complessivo di visualizzazioni non è pubblicato in assenza di conferma.
+
+Il sintonizzatore risponde a trascinamento e tastiera, con molla e scansione automatica. Galaxy deriva dal componente ufficiale React Bits, con OGL, import differito e un solo ciclo `requestAnimationFrame` condiviso. La navigazione offre una pausa esplicita; `prefers-reduced-motion` usa il cielo statico. La licenza React Bits comprende la Commons Clause; i testi completi di licenza sono inclusi dalla build.
+
+La build prepara i font latin/latin-ext, le fotografie in 4:5 e 1:1 AVIF/WebP, un’immagine OG per pagina e favicon 16/32/180/192/512 con ICO. Fonti e trasformazioni sono documentate in `design/brand/PROVENIENZA.md` e nei metadati dei derivati. Gli output in `public/assets` sono ricreabili e vengono generati anche da GitHub Actions.
+
+Il messaggio WhatsApp contiene la storia completa. Oltre la soglia prudenziale di lunghezza del collegamento, la pagina finale propone copia e incolla, mantenendo l’intero testo. Il limite è quattromila codepoint Unicode; il body HTTP ammette l’espansione dovuta alla codifica del modulo. Non esistono link WhatsApp nelle altre pagine.
 
 Umami è disattivato di default. Gli eventi ammessi sono form_inizio, form_inviato, whatsapp_click e puntata_play. Il nome storico form_inviato misura la **preparazione**, non la consegna su WhatsApp. Gli eventi non contengono dati della candidatura. Per le statistiche senza banner va verificata la configurazione concreta del servizio e l’eventuale fornitore.
 
 ## Deploy FTP su Hostinger
 
-Nessun deploy è stato eseguito. L’utente gestisce dominio, piano, SSL, credenziali e primo push. Il workflow parte su push a main oppure manualmente, con concorrenza serializzata.
+Il workflow parte su push a main oppure manualmente, con concorrenza serializzata. Il collegamento FTPS è stato verificato con certificato valido sul nome server del piano; usare il nome DNS nei Secrets, non un IP che non corrisponde al certificato.
+
+L’account FTP apre inizialmente `/public_html`: i Secrets dei percorsi usano quindi valori assoluti, `FTP_DIR_PUBLIC=/public_html/` e `FTP_DIR_APP=/app/`, per evitare cartelle annidate. La configurazione applicativa di produzione è distinta da quella locale e risiede in `/.env`, fuori dalla webroot, con permessi 600. Le Actions non la sovrascrivono.
 
 Prima pubblicazione:
 
@@ -135,8 +147,9 @@ Non aggiungere --delete-excluded. Verifica le directory risolte e fai prima una 
 - npm test: avvia un server PHP temporaneo isolando i segreti di prova; controlla tutte le pagine, H1, JSON-LD, sitemap, header, 404/301, controlli endpoint, invio con JavaScript simulato via fetch, POST senza JavaScript e rate limit. Non apre e non invia WhatsApp.
 - Il test HTTP usa localhost: in ambienti con sandbox di rete può richiedere autorizzazione all’esecuzione locale.
 - Controllo sintattico su tutti i PHP; npm audit senza vulnerabilità al momento della build.
-- Impeccable detect sui sorgenti CSS/template/JS: nessun rilievo meccanico. Audit renderizzato su otto route a 390 e 1440 px: zero violazioni A/AA rilevate da axe, nessun overflow, flusso browser con e senza JavaScript riuscito.
-- Lighthouse mobile dopo la correzione del ritratto LCP: Performance 100, Accessibility 100, Best Practices 81, SEO 100, LCP 1,4 s, CLS 0. Il test esclude soltanto richieste estranee iniettate da Kaspersky; Best Practices risente ancora delle richieste HTTP dell’antivirus. Nessuna modifica al software di protezione. Ripetere su HTTPS in produzione.
+- 32 controlli PHP e 9 test HTTP superati. Impeccable detect: zero rilievi primari e dieci avvisi sulla molla, richiesta dal prototipo approvato. Audit renderizzato su undici route a 390 e 1440 px: zero violazioni A/AA rilevate da axe e nessun overflow.
+- Browser: cinque passi, tastiera, conservazione dei valori tornando indietro, fallback senza JavaScript e storia lunga integra verificati senza inviare messaggi. Movimento: un solo ciclo requestAnimationFrame, pausa esplicita, arresto fuori viewport, riduzione del movimento e shader Galaxy verificati.
+- Lighthouse mobile locale sul design Linea aperta: Performance 96, Accessibility 96, Best Practices 81, SEO 100, LCP 2,6 s, CLS 0,001. Il contrasto segnalato riguarda elementi fuori viewport durante l’ingresso animato; verificati leggibili una volta entrati e con riduzione del movimento. Il successivo controllo mirato dei nomi accessibili YouTube è passato dopo la correzione. Il test esclude richieste estranee iniettate da Kaspersky; Best Practices risente ancora delle richieste HTTP dell’antivirus. Nessuna modifica al software di protezione. Sono misure di laboratorio locali, non Core Web Vitals reali.
 
 Restano da verificare sul dominio reale: redirect HTTPS/www e slash via LiteSpeed, cookie Secure/HSTS, permessi FTP, protezione _app se usata, certificato FTPS, configurazione Turnstile/Umami eventuali, cron, Core Web Vitals con rete reale e apertura WhatsApp sui dispositivi del pubblico. Le bozze privacy/cookie richiedono revisione professionale delle basi giuridiche, fornitori, trasferimenti e tempi organizzativi effettivi. Il footer e la privacy includono la partita IVA approvata.
 

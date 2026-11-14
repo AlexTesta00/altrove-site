@@ -1,7 +1,2 @@
-<section class="section invite" aria-labelledby="invito-titolo">
-<h2 id="invito-titolo"><?= e($common['invitoTitolo']) ?></h2>
-<div class="prose"><?php foreach($common['invito'] as $paragraph): ?><p><?= e($paragraph) ?></p><?php endforeach; ?></div>
-<a class="button" href="/candidati/?origine=<?= e(Altrove\Router::origin($origin)) ?>">Candidati</a>
-<p class="small"><?= e($common['nota']) ?></p>
-</section>
-
+<?php $themeSuffix=in_array($id,['nde','medium','channeling','mentalismo'],true)?'tema='.$id:'origine='.Altrove\Router::origin($origin); ?>
+<section class="linea invito" id="candidati"><h2 class="serif h2">Racconta la tua storia. <span class="mute">Potresti essere il prossimo ospite di ALTROVE.</span></h2><div class="pol"><?php foreach($common['invito'] as $paragraph): ?><p><?= e($paragraph) ?></p><?php endforeach; ?></div><a class="cta" data-magnet href="/candidati/?<?= e($themeSuffix) ?>"><span class="disc wv"><?= icon('arrow') ?></span>Candidati</a><p class="small"><?= e($common['nota']) ?></p></section>

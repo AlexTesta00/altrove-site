@@ -12,6 +12,10 @@ public/assets/build/
 public/assets/img/
 public/assets/og/
 public/assets/favicon/
+public/assets/images/
+public/assets/fonts/
+public/assets/licenses/
+public/assets/asset-provenance.json
 app/storage/*/*
 !app/storage/*/.gitkeep
 **/.ftp-deploy-sync-state*.json
@@ -40,3 +44,4 @@ Thumbs.db
 /foto/*
 !/foto/web/
 /.impeccable/surfaces/
+/.impeccable/review/

@@ -1,0 +1,271 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-14T19:29:17.242005+00:00",
+  "title": "Design System: Altrove · Linea aperta",
+  "extensions": {
+    "colorMeta": {
+      "night": {
+        "role": "neutral",
+        "displayName": "Notte"
+      },
+      "peach": {
+        "role": "primary",
+        "displayName": "Segnale pesca"
+      },
+      "peach-hover": {
+        "role": "primary",
+        "displayName": "Pesca chiaro"
+      },
+      "cream": {
+        "role": "neutral",
+        "displayName": "Crema"
+      },
+      "lavender": {
+        "role": "neutral",
+        "displayName": "Lavanda"
+      },
+      "soft": {
+        "role": "neutral",
+        "displayName": "Lavanda morbida"
+      },
+      "panel": {
+        "role": "neutral",
+        "displayName": "Pannello indaco"
+      },
+      "text-secondary": {
+        "role": "neutral",
+        "displayName": "Lavanda chiara"
+      },
+      "rose": {
+        "role": "secondary",
+        "displayName": "Voce rosa"
+      },
+      "violet": {
+        "role": "secondary",
+        "displayName": "Orizzonte viola"
+      },
+      "selected": {
+        "role": "neutral",
+        "displayName": "Indaco selezionato"
+      },
+      "error": {
+        "role": "tertiary",
+        "displayName": "Rosa errore"
+      },
+      "placeholder": {
+        "role": "neutral",
+        "displayName": "Lavanda segnaposto"
+      },
+      "tone-8": {
+        "role": "neutral",
+        "displayName": "Filetto navigazione"
+      },
+      "tone-19": {
+        "role": "neutral",
+        "displayName": "Filetto pannello"
+      },
+      "tone-28": {
+        "role": "neutral",
+        "displayName": "Filetto campo"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "display",
+        "purpose": "Titolo principale su telefono."
+      },
+      "display-desktop": {
+        "displayName": "display-desktop",
+        "purpose": "Titolo principale dal breakpoint di 900px."
+      },
+      "headline": {
+        "displayName": "headline",
+        "purpose": "Titoli di sezione a due toni."
+      },
+      "title": {
+        "displayName": "title",
+        "purpose": "Nomi delle frequenze."
+      },
+      "body": {
+        "displayName": "body",
+        "purpose": "Paragrafi e campi."
+      },
+      "label": {
+        "displayName": "label",
+        "purpose": "Etichette e informazioni di accompagnamento."
+      },
+      "control": {
+        "displayName": "control",
+        "purpose": "Testo del comando principale."
+      }
+    },
+    "shadows": [
+      {
+        "name": "navigation",
+        "value": "0 10px 28px -10px rgba(5,3,20,.8)",
+        "purpose": "Distacco della navigazione fissa. Fonte: src/css/app.css (.nav)."
+      },
+      {
+        "name": "eclipse",
+        "value": "inset -3px 2px 0 var(--color-peach)",
+        "purpose": "Geometria della lampada, non elevazione. Fonte: src/css/app.css (.lamp)."
+      },
+      {
+        "name": "option-eclipse",
+        "value": "inset -5px 3px 0 var(--color-peach)",
+        "purpose": "Segno della radio selezionata. Fonte: src/css/app.css (.opt input:checked)."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-entry",
+        "value": "cubic-bezier(.16,1,.3,1)",
+        "purpose": "Ingresso di parole e passi. Fonte: src/css/app.css."
+      },
+      {
+        "name": "ease-spring",
+        "value": "cubic-bezier(.34,1.56,.64,1)",
+        "purpose": "Scatti del disco, opzioni e ago del modulo. Fonte: src/css/app.css."
+      },
+      {
+        "name": "duration-entry",
+        "value": "600ms",
+        "purpose": "Ingresso dei passi. Fonte: src/css/app.css (.step-enter)."
+      },
+      {
+        "name": "duration-control",
+        "value": "300ms",
+        "purpose": "Cambio colore dei comandi e altezza dell’onda. Fonte: src/css/app.css."
+      },
+      {
+        "name": "station-scan",
+        "value": "3600ms",
+        "purpose": "Cambio automatico della stazione; interrotto dall’interazione. Fonte: src/js/tuner.js."
+      },
+      {
+        "name": "station-resume",
+        "value": "14000ms",
+        "purpose": "Attesa dopo l’interazione prima di riprendere la scansione. Fonte: src/js/tuner.js."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "compact-max",
+        "value": "420px"
+      },
+      {
+        "name": "desktop-min",
+        "value": "900px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Comando principale",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Capsula e disco pesca per l’azione principale. Fonte: src/css/app.css (.cta, .disc) e app/templates/partials/form.php.",
+      "html": "<button type=\"button\" class=\"ds-cta\"><span class=\"ds-disc\"><svg class=\"ds-icon\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M4 12h15M13 6l6 6-6 6\"/></svg></span>Continua</button>",
+      "css": ".ds-cta{display:inline-flex;align-items:center;gap:14px;min-height:56px;padding:8px 24px 8px 8px;border:0;border-radius:999px;background:var(--color-cream,#fbefe3);color:var(--color-night,#110c2e);font:600 17px var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);cursor:pointer;transition:transform 500ms cubic-bezier(.34,1.56,.64,1)}.ds-cta:hover{transform:translateY(-2px)}.ds-cta:focus-visible{outline:2px solid var(--color-peach,#ffc48a);outline-offset:3px;}.ds-cta:disabled{opacity:.4;cursor:not-allowed;transform:none}.ds-disc{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--color-peach,#ffc48a);transition:transform 450ms cubic-bezier(.34,1.56,.64,1)}.ds-cta:hover .ds-disc{transform:translateX(4px) rotate(-8deg)}.ds-icon{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}@media(prefers-reduced-motion:reduce){.ds-cta,.ds-disc{transition:none}}"
+    },
+    {
+      "name": "Capsula compatta",
+      "kind": "button",
+      "refersTo": "button-pill",
+      "description": "Comando Candidati nella navigazione. Fonte: src/css/app.css (.pill).",
+      "html": "<a class=\"ds-pill\" href=\"/candidati/\">Candidati</a>",
+      "css": ".ds-pill{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--color-cream,#fbefe3);color:var(--color-night,#110c2e);font-weight:600;font-size:15px;line-height:1.55;font-family:var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);text-decoration:none;transition:background 300ms}.ds-pill:hover{background:var(--color-peach-hover,#ffe0bf);color:var(--color-night,#110c2e)}.ds-pill:focus-visible{outline:2px solid var(--color-peach,#ffc48a);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-pill{transition:none}}"
+    },
+    {
+      "name": "Comando secondario",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Ritorno al passo precedente o copia del messaggio. Fonte: src/css/app.css (.ghost) e app/templates/partials/form.php.",
+      "html": "<button type=\"button\" class=\"ds-ghost\">Indietro</button>",
+      "css": ".ds-ghost{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;min-height:52px;border-radius:999px;border:1px solid var(--color-tone-28,rgba(251,239,227,.24));background:transparent;color:var(--color-cream,#fbefe3);font:500 16px var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);cursor:pointer}.ds-ghost:hover{border-color:var(--color-peach,#ffc48a)}.ds-ghost:focus-visible{outline:2px solid var(--color-peach,#ffc48a);outline-offset:4px}.ds-ghost:disabled{cursor:not-allowed}"
+    },
+    {
+      "name": "Campo di testo",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Etichetta visibile, fondo notte e focus pesca. Fonte: src/css/app.css (.lbl, .fld) e app/templates/partials/form.php.",
+      "html": "<label class=\"ds-label\" for=\"ds-name\">Nome</label><input id=\"ds-name\" class=\"ds-field\" autocomplete=\"given-name\">",
+      "css": ".ds-label{display:block;margin:18px 0 6px;font-size:15px;line-height:1.55;font-family:var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);color:var(--color-text-secondary,#e6ddf8)}.ds-field{display:block;width:100%;min-height:52px;padding:13px 16px;border-radius:16px;border:1px solid var(--color-tone-28,rgba(251,239,227,.24));background:var(--color-night,#110c2e);color:var(--color-cream,#fbefe3);font:400 18px/1.55 var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);caret-color:var(--color-peach,#ffc48a)}.ds-field:focus{outline:2px solid var(--color-peach,#ffc48a);outline-offset:2px}.ds-field[aria-invalid=true]{border-color:var(--color-error,#ffb7b7)}.ds-field::placeholder{color:var(--color-placeholder,#9c8fcb)}"
+    },
+    {
+      "name": "Navigazione a capsula",
+      "kind": "nav",
+      "refersTo": "navigation",
+      "description": "Anteprima locale della capsula; sul sito è fissa. Fonte: src/css/app.css (.nav, .brand, .lamp) e app/templates/layout.php.",
+      "html": "<nav class=\"ds-nav\" aria-label=\"Navigazione\"><a class=\"ds-brand\" href=\"/\"><span class=\"ds-lamp\" aria-hidden=\"true\"></span>ALTROVE</a><a class=\"ds-nav-action\" href=\"/candidati/\">Candidati</a></nav>",
+      "css": ".ds-nav{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:6px;border-radius:999px;background:var(--color-panel,#1a1442);border:1px solid var(--color-tone-8,rgba(251,239,227,.14));box-shadow:0 10px 28px -10px rgba(5,3,20,.8)}.ds-brand{display:flex;align-items:center;min-height:44px;gap:10px;padding:0 10px;color:var(--color-cream,#fbefe3);font:400 15px/1.55 var(--font-display,\"Tenor Sans\",serif);letter-spacing:.22em;text-decoration:none}.ds-lamp{position:relative;width:20px;height:20px;border-radius:50%;box-shadow:inset -3px 2px 0 var(--color-peach,#ffc48a)}.ds-lamp::before{content:\"\";position:absolute;left:50%;top:-7px;width:1px;height:9px;background:var(--color-peach,#ffc48a)}.ds-nav-action{display:inline-flex;align-items:center;min-height:44px;padding:0 18px;border-radius:999px;background:var(--color-cream,#fbefe3);color:var(--color-night,#110c2e);font:600 15px/1.55 var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);text-decoration:none;transition:background 300ms}.ds-nav-action:hover{background:var(--color-peach-hover,#ffe0bf)}.ds-brand:focus-visible,.ds-nav-action:focus-visible{outline:2px solid var(--color-peach,#ffc48a);outline-offset:3px;}@media(prefers-reduced-motion:reduce){.ds-nav-action{transition:none}}"
+    },
+    {
+      "name": "Fatto breve",
+      "kind": "chip",
+      "refersTo": "fact-chip",
+      "description": "Capsula informativa non interattiva. Fonte: src/css/app.css (.facts li) e app/templates/pages/page.php.",
+      "html": "<span class=\"ds-fact\">Content creator</span>",
+      "css": ".ds-fact{display:inline-block;padding:8px 14px;border-radius:999px;background:var(--color-panel,#1a1442);color:var(--color-cream,#fbefe3);border:1px solid var(--color-tone-8,rgba(251,239,227,.14));font:400 15px/1.35 var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif)}"
+    },
+    {
+      "name": "Pannello candidatura",
+      "kind": "card",
+      "refersTo": "form-panel",
+      "description": "Cornice della candidatura, con angoli superiori più ampi. Fonte: src/css/app.css (.panel, .q, .qh).",
+      "html": "<section class=\"ds-panel\"><h2 class=\"ds-question\">In che veste ti candidi?</h2><p class=\"ds-help\">Tocca un’opzione per continuare.</p></section>",
+      "css": ".ds-panel{padding:28px 20px 24px;border-radius:44px 44px 28px 28px;background:var(--color-panel,#1a1442);color:var(--color-cream,#fbefe3);border:1px solid var(--color-tone-19,rgba(251,239,227,.12))}.ds-question{margin:28px 0 0;font:400 clamp(28px,7.6vw,44px)/1.1 var(--font-display,\"Tenor Sans\",serif);text-wrap:balance}.ds-help{margin:8px 0 0;color:var(--color-lavender,#b9abea);font:400 16px/1.55 var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif)}@media(min-width:900px){.ds-panel{padding:48px 56px 40px}}"
+    },
+    {
+      "name": "Opzione a eclissi",
+      "kind": "input",
+      "refersTo": "option",
+      "description": "Radio nativo con selezione visibile anche nella forma. Fonte: src/css/app.css (.opt, .ot, .od) e app/templates/partials/form.php.",
+      "html": "<label class=\"ds-option\"><input type=\"radio\" name=\"ds-role\" value=\"esperienza\"><span class=\"ds-option-title\">Ho vissuto un’esperienza</span><span class=\"ds-option-description\">Una NDE, un contatto, un evento che non riesci a spiegare.</span></label>",
+      "css": ".ds-option{position:relative;display:grid;gap:4px;width:100%;padding:18px 58px 18px 18px;border-radius:20px;border:1px solid rgba(251,239,227,.2);background:var(--color-night,#110c2e);color:var(--color-cream,#fbefe3);font-family:var(--font-sans,\"Hanken Grotesk\",system-ui,sans-serif);text-align:left;cursor:pointer;transition:border-color 300ms,background 300ms}.ds-option:hover{border-color:rgba(255,196,138,.7)}.ds-option:has(input:checked){border-color:var(--color-peach,#ffc48a);background:var(--color-selected,#231b58)}.ds-option:focus-within{outline:2px solid var(--color-peach,#ffc48a);outline-offset:3px;}.ds-option input{appearance:none;position:absolute;right:18px;top:19px;margin:0;width:22px;height:22px;border:1.5px solid rgba(251,239,227,.5);border-radius:50%;background:none}.ds-option input:checked{border-color:var(--color-peach,#ffc48a);box-shadow:inset -5px 3px 0 var(--color-peach,#ffc48a)}.ds-option input:focus{outline:none}.ds-option-title{font-weight:600;font-size:17px;line-height:1.3}.ds-option-description{font-size:15px;line-height:1.45;color:var(--color-soft,#d9cff5)}@media(prefers-reduced-motion:reduce){.ds-option{transition:none}}"
+    }
+  ],
+  "narrative": {
+    "northStar": "Linea aperta",
+    "overview": "Altrove è una radio nella notte: una superficie indaco continua, comandi chiari e una luce pesca che indica dove intervenire. La scala di sintonia, l'ago e la lampada a eclissi traducono l'identità del podcast in strumenti riconoscibili. Tenor Sans dà respiro ai titoli; Hanken Grotesk sostiene una lettura lunga e personale.\n\nLa densità cresce attorno ai comandi, poi si allenta fra le sezioni. Il cielo resta dietro al contenuto; il movimento racconta accensione, sintonia e voce. Il sistema conserva un aspetto completo quando le animazioni sono ferme. La direzione approvata esclude la combinazione generica di galassia protagonista, titolo centrale e pannelli di vetro.",
+    "keyCharacteristics": [
+      "Notte continua, testi crema e lavanda, segnale pesca.",
+      "Capsule operative, dischi ed eclissi; pannelli ampi e morbidi.",
+      "Titoli a due toni allineati a sinistra e testo di lettura generoso.",
+      "Sintonia e onda della voce come interazioni riconoscibili.",
+      "Contenuto e controlli utilizzabili con tastiera, pausa e movimento ridotto."
+    ],
+    "rules": [
+      {
+        "name": "The Segnale Rule",
+        "body": "Il pesca indica azione, posizione o stato; una selezione deve avere anche un segno riconoscibile, come ago, eclissi, bordo o riempimento.",
+        "section": "colors"
+      },
+      {
+        "name": "The Parola Intera Rule",
+        "body": "ALTROVE sull'orizzonte si adatta alla larghezza disponibile e resta intera; il suo trattamento monumentale non autorizza a tagliare il marchio.",
+        "section": "typography"
+      },
+      {
+        "name": "The Notte Continua Rule",
+        "body": "Conserva un fondo notturno continuo e usa il pannello indaco per delimitare un'azione o un gruppo; non aggiungere ombre diffuse a ogni contenitore.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usa i colori per i ruoli registrati e conserva il fondo notturno fra le pagine.",
+      "Do mantieni il testo di lettura alla misura body e i font locali della coppia approvata.",
+      "Do accompagna selezione, errore e progresso con forma, testo o posizione riconoscibile.",
+      "Do conserva ALTROVE intera e le icone SVG del sistema.",
+      "Do verifica ogni nuova animazione con pausa, movimento ridotto, tastiera e contenuti completamente entrati in vista.",
+      "Do mantieni etichette visibili e una candidatura utilizzabile senza l'arricchimento a passi."
+    ],
+    "donts": [
+      "Don't trasformare il cielo nello sfondo protagonista di una hero generica con titolo centrale e pannelli di vetro.",
+      "Don't introdurre nuove palette di accento, font display o stili di ombra per una singola sezione.",
+      "Don't usare metadati piccoli come corpo del testo o segnaposto come unica etichetta.",
+      "Don't rendere il movimento indispensabile per capire un contenuto o raggiungere un comando.",
+      "Don't aggiungere etichette decorative sopra i titoli o icone ottenute da glifi: non appartengono al sistema implementato."
+    ]
+  }
+}

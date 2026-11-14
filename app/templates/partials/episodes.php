@@ -1,20 +1,4 @@
 <?php if($episodes): ?>
-<section class="section" aria-labelledby="puntate-titolo">
-<h2 id="puntate-titolo">Le voci di Altrove</h2>
-<p>Le ultime pubblicazioni dal canale, tra puntate ed estratti.</p>
-<div class="episodes">
-<?php foreach($episodes as $episode): ?>
-<article class="episode">
-<a href="https://www.youtube.com/watch?v=<?= e($episode['id']) ?>" data-video="<?= e($episode['id']) ?>" target="_blank" rel="noopener noreferrer" aria-label="Guarda <?= e($episode['title']) ?>">
-<img src="https://i.ytimg.com/vi/<?= e($episode['id']) ?>/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async">
-<span class="play-label">Guarda la puntata</span>
-</a>
-<h3><?= e($episode['title']) ?></h3>
-<?php if(preg_match('/^\d{4}-\d{2}-\d{2}$/D',$episode['date'])): ?><time datetime="<?= e($episode['date']) ?>"><?= e(date('d/m/Y',strtotime($episode['date']))) ?></time><?php endif; ?>
-</article>
-<?php endforeach; ?>
-</div>
-<p class="small">Il video si carica quando lo scegli. <a href="/cookie/">Informazioni sui servizi esterni</a>.</p>
-</section>
-<?php endif; ?>
-
+<section class="sec episodes-section" aria-labelledby="puntate-titolo"><h2 class="serif h2" id="puntate-titolo">Le voci di Altrove. <span class="mute">Ascolta le storie.</span></h2><div class="episodes">
+<?php foreach($episodes as $episode): ?><article class="episode"><div class="video-facade"><a class="episode-cover" href="https://www.youtube.com/watch?v=<?= e($episode['id']) ?>" data-video="<?= e($episode['id']) ?>" aria-label="Ascolta <?= e($episode['title']) ?>"><img src="https://i.ytimg.com/vi/<?= e($episode['id']) ?>/hqdefault.jpg" width="480" height="360" alt="" loading="lazy" decoding="async"><span class="listen-pill"><?= icon('play') ?>Ascolta</span></a></div><h3 class="serif"><?= e($episode['title']) ?></h3><?php if(isset($episode['views'])&&is_int($episode['views'])): ?><p class="yt-v"><?= e(number_format($episode['views'],0,',','.')) ?> visualizzazioni</p><?php endif; ?></article><?php endforeach; ?>
+</div></section><?php endif; ?>

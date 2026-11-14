@@ -21,6 +21,8 @@ $page = $pages[$id];
 $page['id'] = $id;
 if (in_array($id, ['nde', 'medium', 'channeling', 'mentalismo'], true)) $page = array_merge($page, require $appPath . '/content/' . $id . '.php');
 $common = require $appPath . '/content/common.php';
+$home = require $appPath . '/content/home.php';
+if ($id === 'home') unset($page['faq']);
 $origin = $path === '/' ? 'home' : trim($path, '/');
 $flash = []; $old = []; $errors = [];
 if (in_array($id, ['candidati', 'grazie'], true)) {
@@ -30,7 +32,11 @@ if (in_array($id, ['candidati', 'grazie'], true)) {
     $old = $flash['old'] ?? [];
     $errors = $flash['errors'] ?? [];
     $origin = Router::origin($old['origine'] ?? $_GET['origine'] ?? 'candidati');
+    $themeQuery = $_GET['tema'] ?? '';
+    if (!isset($old['tema']) && is_string($themeQuery) && in_array($themeQuery, ['nde','medium','channeling','mentalismo','altro'], true)) $old['tema'] = $themeQuery;
 }
-$episodes = isset($page['episodes']) ? Altrove\YouTubeFeed::get($config, $page['episodes']) : [];
+$episodes = $id==='home' && method_exists(Altrove\YouTubeFeed::class,'getPopular') ? Altrove\YouTubeFeed::getPopular($config,5) : (isset($page['episodes']) ? Altrove\YouTubeFeed::get($config,$page['episodes']) : []);
+$frequencyEpisodes = [];
+if ($id==='home') foreach($home['frequenze'] as $frequency) $frequencyEpisodes[$frequency['id']]=Altrove\YouTubeFeed::get($config,$frequency['keywords']);
 require $appPath . '/templates/layout.php';
 
