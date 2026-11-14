@@ -1,0 +1,23 @@
+{
+  "name": "altrove-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "build": "node tools/build.mjs",
+    "test": "node --test tests/http.test.mjs",
+    "test:php": "php tests/unit.php"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.1.0",
+    "esbuild": "^0.25.0",
+    "sharp": "^0.35.5",
+    "tailwindcss": "^4.1.0"
+  },
+  "dependencies": {
+    "ogl": "^1.0.11"
+  }
+}

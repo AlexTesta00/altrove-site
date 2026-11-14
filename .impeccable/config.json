@@ -1,0 +1,62 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Main.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:24:44.084Z",
+        "reason": "Claude: puntini di stelle da 1-1,5px del cielo notturno nel prototipo (sfondo astrale richiesto dal brief, in produzione WebGL), non un alone"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Alba.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:24:44.216Z",
+        "reason": "Claude: puntini di stelle da 1-1,5px del cielo notturno nel prototipo (sfondo astrale richiesto dal brief, in produzione WebGL), non un alone"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Arcani.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:24:44.373Z",
+        "reason": "Claude: puntini di stelle da 1-1,5px del cielo notturno nel prototipo (sfondo astrale richiesto dal brief, in produzione WebGL), non un alone"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Main.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:24:44.523Z",
+        "reason": "Claude: scala delle frequenze del sintonizzatore, elemento firma della direzione A (radio), non decorazione"
+      },
+      {
+        "rule": "radial-halo",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Candidati.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:38:07.296Z",
+        "reason": "Claude: puntini di stelle da 1-1,5px del cielo notturno nel prototipo (sfondo astrale richiesto dal brief, in produzione WebGL), non un alone"
+      },
+      {
+        "rule": "repeating-stripes-gradient",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Candidati.dc.html"
+        ],
+        "createdAt": "2026-11-14T17:38:16.207Z",
+        "reason": "Claude: scala del sintonizzatore usata come barra di avanzamento del form, elemento firma della direzione A, non decorazione"
+      }
+    ]
+  }
+}

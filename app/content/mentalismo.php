@@ -1,0 +1,22 @@
+<?php
+return ['sections' => [['Curiosità per la mente e la percezione',
+'Che cosa ci fa credere di aver visto qualcosa? Come cambia il nostro modo di prestare attenzione? Mentalismo e ipnosi aprono domande diverse, che in Altrove voglio affrontare senza confonderle. Mi interessano le persone che lavorano con questi temi e quelle che hanno vissuto un’esperienza significativa. Una conversazione può partire da un episodio, da un percorso di studio o da un cambiamento nel modo di osservare se stessi e il mondo.'],
+['Distinguere i contesti',
+'Una performance di mentalismo, una pratica di rilassamento e un intervento in ambito sanitario non sono la stessa cosa. Se vuoi raccontare un’attività professionale, descrivi il contesto in cui la svolgi e le competenze con cui ti presenti. Evita qualifiche ambigue o promesse che vanno oltre il tuo ruolo. La chiarezza aiuta chi ascolta a capire di quale esperienza stiamo parlando e a non attribuire al racconto un valore che non possiede.'],
+['La storia, prima delle spiegazioni',
+'Nella candidatura puoi raccontare come hai incontrato questi temi, che cosa ti ha incuriosito e quale domanda vorresti portare nel podcast. Non devi svelare tecniche riservate né descrivere trattamenti personali in ogni dettaglio. Se il racconto coinvolge altre persone, mantienile non riconoscibili. Un primo contatto essenziale è sufficiente per capire se approfondire: i passaggi delicati si affrontano in seguito, quando avremo chiarito insieme lo scopo e i limiti della conversazione.'],
+['Come nasce una puntata',
+'Dopo aver compilato il modulo, rileggi il messaggio che viene preparato e invialo su WhatsApp se vuoi presentarmi la tua candidatura. Io leggo la storia e valuto se si inserisce nel percorso di Altrove. Un eventuale confronto preliminare serve a conoscerci e a stabilire gli argomenti. Non ci sono date assegnate dal sito o una pubblicazione garantita. Registrazione, modalità e autorizzazioni vengono definite separatamente, prima che il racconto diventi un contenuto pubblico.'],
+['Nessuna promessa di cura',
+'Le puntate non sono sedute, diagnosi o percorsi terapeutici. Un’esperienza raccontata da un ospite non permette di prevedere quello che accadrà a un’altra persona. Per i temi che riguardano la salute, il riferimento resta un professionista qualificato nel proprio ambito. Anche i ricordi e le interpretazioni emersi durante un’esperienza vanno trattati con prudenza: il podcast non li presenta automaticamente come prove di eventi realmente accaduti o come una verità valida per tutti.'],
+['Spazio alle domande',
+'Vorrei che una puntata lasciasse a chi ascolta strumenti per fare domande migliori, senza creare dipendenza da una persona o da una spiegazione. Per questo contano la disponibilità al confronto, il rispetto dei limiti e un linguaggio accessibile. Prima della conversazione puoi indicare gli argomenti che preferisci non affrontare e capire come verrà utilizzata la tua testimonianza. Il consenso dato nel modulo riguarda soltanto la candidatura e il ricontatto, non la diffusione pubblica della tua storia.']],
+'faq' => [['Mentalismo e ipnosi sono la stessa cosa?',
+'No. Nel podcast distinguiamo i contesti e chiediamo agli ospiti di chiarire che cosa fanno e con quali competenze.'],
+['Posso proporre la mia esperienza come partecipante?',
+'Sì. Racconta il tuo punto di vista e ciò che desideri condividere, evitando dati di altre persone.'],
+['Durante la puntata si svolgono trattamenti?',
+'Le puntate sono conversazioni e non sostituiscono sedute, diagnosi o assistenza sanitaria.'],
+['Devo inviare certificati o documenti?',
+'Il modulo non accetta allegati. Per il primo contatto è sufficiente descrivere il tuo percorso con parole chiare.']]];
+

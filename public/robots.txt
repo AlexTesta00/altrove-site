@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+Disallow: /grazie/
+Sitemap: https://altrove.space/sitemap.xml
+

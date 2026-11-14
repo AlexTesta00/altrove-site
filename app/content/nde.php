@@ -1,0 +1,22 @@
+<?php
+return ['sections' => [['Quello che hai vissuto, con le tue parole',
+'Un’esperienza di pre-morte può lasciare domande che non è semplice condividere. A volte il ricordo è preciso: una luce, un incontro, una sensazione di distanza dal proprio corpo. Altre volte restano frammenti, emozioni o il bisogno di capire che cosa sia cambiato. In Altrove ti invito a partire da lì, da ciò che ricordi e da come lo vivi oggi. Non devi trovare parole perfette né adattare la tua storia a quella di qualcun altro.'],
+['Le storie che cerco',
+'Mi interessano le esperienze vissute in prima persona e il percorso che le accompagna. Puoi raccontarmi il momento in cui è successo, quando hai iniziato a parlarne e quali domande porti ancora con te. Anche un racconto diverso da quelli già ascoltati può aprire una conversazione significativa. Non cerco una conferma a una tesi: cerco una persona disponibile a raccontarsi, capace di distinguere i propri ricordi dalle interpretazioni maturate nel tempo.'],
+['Prima della conversazione',
+'La candidatura è un primo contatto, non la registrazione di una puntata. Scrivi soltanto ciò che senti di condividere e lascia fuori referti, documenti clinici, indirizzi e nomi di altre persone. Per iniziare basta un racconto essenziale. Dopo il modulo puoi rileggere il messaggio preparato su WhatsApp e decidere se inviarlo. Io valuto la storia che ricevo e, se desidero approfondirla, ti ricontatto per conoscerti meglio.'],
+['Il tuo ritmo conta',
+'Se il racconto diventa una proposta di puntata, ci confrontiamo prima sui temi che vorresti affrontare e sui limiti da rispettare. Puoi segnalare un passaggio delicato, chiedere di non affrontare un argomento o dirmi che non ti senti pronto. Il confronto preliminare serve anche a capire insieme se una conversazione pubblica è adatta a questo momento della tua vita. Non devi raccontare tutto per essere ascoltato con attenzione.'],
+['Rispetto, senza promesse',
+'Le testimonianze di Altrove sono racconti personali. Non sostituiscono una valutazione medica, non dimostrano una spiegazione valida per tutti e non offrono indicazioni su cure o trattamenti. Posso ascoltare la dimensione emotiva e spirituale della tua esperienza senza attribuirle una certezza che non hai espresso. Ti chiedo lo stesso rispetto verso chi la pensa diversamente e verso le persone coinvolte nella tua storia, soprattutto quando sono riconoscibili.'],
+['Dalla storia alla puntata',
+'Durante il primo confronto parliamo anche di come potrebbe svolgersi l’intervista, dei temi e delle modalità di registrazione. Questi dettagli si concordano personalmente: il modulo non assegna date e non garantisce una pubblicazione. Prima di un eventuale utilizzo pubblico della tua testimonianza andranno chiariti separatamente i consensi e le autorizzazioni necessari. Il consenso alla candidatura riguarda il contatto iniziale, non è un’autorizzazione generale a diffondere tutto ciò che scrivi.']],
+'faq' => [['Devo essere sicuro che fosse una NDE?',
+'No. Raccontami ciò che ricordi e quali dubbi hai, senza attribuire all’esperienza un nome che non senti tuo.'],
+['Devo inviare documenti medici?',
+'No. Non caricare referti o documenti clinici e non inserire dettagli sanitari che non servono al primo contatto.'],
+['Posso raccontare una storia mai condivisa?',
+'Sì, se ti senti pronto. Parti da ciò che desideri dire e segnala gli argomenti che preferisci tenere privati.'],
+['Posso parlare dell’esperienza di un’altra persona?',
+'Il podcast privilegia la voce di chi ha vissuto l’esperienza. Non inviare dati personali di altre persone senza il loro consenso.']]];
+

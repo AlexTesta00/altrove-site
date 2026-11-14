@@ -1,0 +1,22 @@
+<?php
+return ['sections' => [['Dare parole a un percorso interiore',
+'Channeling e coscienza stellare sono espressioni che possono avere significati diversi per chi le usa. In Altrove non do per scontato che chi ascolta conosca quel linguaggio. Ti invito a spiegare che cosa significa per te, come si collega alla tua esperienza e quali domande ti accompagna. Il punto di partenza è una storia comprensibile, raccontata da una persona, senza la necessità di condividere in anticipo le stesse convinzioni.'],
+['Quello che vorrei conoscere',
+'Mi interessa il percorso attraverso cui sei arrivato a queste pratiche o a questa visione del mondo. Puoi raccontare incontri, letture, cambiamenti personali e momenti di dubbio. Se svolgi un’attività, descrivi con chiarezza che cosa fai e quali limiti riconosci. Se invece si tratta di una ricerca privata, puoi partire da un’esperienza significativa. Non serve presentarsi come una guida o avere una spiegazione per ogni cosa per proporre una conversazione.'],
+['Un invito alla chiarezza',
+'Nel racconto cerca di distinguere ciò che hai vissuto, il modo in cui lo interpreti e le idee che hai incontrato successivamente. Questa distinzione aiuta chi ascolta a orientarsi e lascia spazio a domande sincere. I termini più specifici possono essere spiegati con esempi semplici, senza dare per certe informazioni che appartengono a una convinzione spirituale. Il confronto diventa più interessante quando una persona può seguire il tuo ragionamento, anche se arriva da un’esperienza diversa.'],
+['Dal modulo al primo contatto',
+'Per candidarti basta una presentazione essenziale della tua storia e del tema che vorresti affrontare. Non inserire documenti, dati di altre persone o dettagli intimi non necessari. Dopo il modulo si apre il passaggio a WhatsApp: puoi rileggere il messaggio e scegliere di inviarlo. Quando ricevo una candidatura la valuto nel contesto di Altrove. Se desidero approfondire, ti ricontatto personalmente per capire insieme se esistono le condizioni per una puntata.'],
+['Libertà di ascoltare e di dubitare',
+'Il podcast non propone le esperienze spirituali come indicazioni mediche, diagnosi o soluzioni garantite. Chi ascolta deve poter mantenere il proprio punto di vista senza pressioni, paura o richieste di fiducia incondizionata. Per questo valuto con attenzione il modo in cui vengono raccontati temi delicati, soprattutto quando coinvolgono sofferenza o difficoltà personali. Un ospite può condividere ciò in cui crede rispettando il diritto degli altri di non riconoscersi in quella lettura.'],
+['Preparare una conversazione pubblica',
+'Prima di un’eventuale registrazione ci confrontiamo sugli argomenti, sulle domande e sui confini del racconto. Puoi indicare ciò che non vuoi rendere pubblico e chiedere chiarimenti sull’uso della conversazione. La candidatura non fissa una data e non equivale a un’autorizzazione alla pubblicazione. La disponibilità ad ascoltare, a spiegare e a riconoscere i propri limiti è parte del percorso. L’obiettivo è una conversazione rispettosa, in cui l’esperienza personale rimanga riconoscibile come tale.']],
+'faq' => [['Devo conoscere già il channeling per ascoltare?',
+'No. Le conversazioni cercano di spiegare i termini attraverso le esperienze di chi partecipa.'],
+['Posso proporre un progetto legato alla spiritualità?',
+'Sì. Racconta che cosa fai, perché e quali temi vorresti condividere con il pubblico di Altrove.'],
+['La coscienza stellare viene presentata come un fatto scientifico?',
+'No. Il podcast distingue il racconto personale e le convinzioni spirituali dalle conoscenze scientifiche.'],
+['Posso candidarmi se ho ancora molti dubbi?',
+'Sì. I dubbi possono essere una parte importante e sincera del tuo percorso.']]];
+

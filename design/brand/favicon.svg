@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>Altrove</title>
+  <rect width="64" height="64" rx="14" fill="#110C2E"/>
+  <circle cx="32" cy="37" r="14" fill="none" stroke="#6658BC" stroke-width="3"/>
+  <path d="M39 24.9A14 14 0 0 1 39 49.1" fill="none" stroke="#FFC48A" stroke-width="3.5" stroke-linecap="round"/>
+  <path d="M32 7v11" fill="none" stroke="#FFC48A" stroke-width="2" stroke-linecap="round"/>
+</svg>

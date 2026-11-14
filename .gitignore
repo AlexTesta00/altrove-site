@@ -1,0 +1,42 @@
+# Segreti: mai su git
+.env
+.env.*
+!.env.example
+
+# Dipendenze, output di build e dati locali
+node_modules/
+vendor/
+app/vendor/
+.runtime/
+public/assets/build/
+public/assets/img/
+public/assets/og/
+public/assets/favicon/
+app/storage/*/*
+!app/storage/*/.gitkeep
+**/.ftp-deploy-sync-state*.json
+*.pem
+*.key
+*.seal
+test-results/
+playwright-report/
+.DS_Store
+Thumbs.db
+.impeccable/hook.cache.json
+
+# Materiali interni: il repository remoto è pubblico
+/analisi/
+/output/
+/statistiche/
+/inspo/
+/CLAUDE.md
+/PRODUCT.md
+/DOMANDE.md
+/meeting.md
+/codex-log.md
+/prompts/
+/design/canvas/
+/design/brand/higgsfield/
+/foto/*
+!/foto/web/
+/.impeccable/surfaces/

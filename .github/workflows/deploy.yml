@@ -1,0 +1,105 @@
+name: Verifica e deploy FTP di Altrove
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: altrove-produzione
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: npm
+      - name: Installa e compila
+        run: |
+          npm ci
+          npm run build
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: curl, intl, mbstring, openssl, sodium, simplexml
+          coverage: none
+      - name: Controlla PHP e test
+        run: |
+          find app public tools tests -name '*.php' -print0 | xargs -0 -n1 php -l
+          php tests/unit.php
+          npm test
+      - name: Verifica percorsi e credenziali di deploy
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+          FTP_DIR_PUBLIC: ${{ secrets.FTP_DIR_PUBLIC }}
+          FTP_DIR_APP: ${{ secrets.FTP_DIR_APP }}
+        run: |
+          for key in FTP_SERVER FTP_USERNAME FTP_PASSWORD FTP_DIR_PUBLIC FTP_DIR_APP; do
+            if [[ -z "${!key}" ]]; then
+              echo "Secret obbligatorio mancante: $key"
+              exit 1
+            fi
+          done
+          for path in "$FTP_DIR_PUBLIC" "$FTP_DIR_APP"; do
+            if [[ "$path" == "/" || "$path" == "./" || "$path" == *".."* || "$path" != */ ]]; then
+              echo "Directory FTP non valida: deve essere dedicata al sito e terminare con una barra."
+              exit 1
+            fi
+          done
+          if [[ "$FTP_DIR_PUBLIC" == "$FTP_DIR_APP" ]]; then
+            echo "Webroot e applicazione devono avere directory diverse."
+            exit 1
+          fi
+      - name: Distribuisci applicazione privata
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          local-dir: ./app/
+          server-dir: ${{ secrets.FTP_DIR_APP }}
+          state-name: .ftp-deploy-sync-state-app.json
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/.env.*
+            storage
+            storage/**
+      - name: Distribuisci webroot
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.6
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftps
+          port: 21
+          security: strict
+          local-dir: ./public/
+          server-dir: ${{ secrets.FTP_DIR_PUBLIC }}
+          state-name: .ftp-deploy-sync-state-public.json
+          dangerous-clean-slate: false
+          exclude: |
+            **/.git*
+            **/.git*/**
+            **/node_modules/**
+            **/.env
+            **/.env.*
+            _app
+            _app/**
+            app
+            app/**
+            vendor/**
+            tools/**
+

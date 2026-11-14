@@ -1,0 +1,22 @@
+<?php
+return ['sections' => [['Una sensibilità da raccontare',
+'Quando una persona parla di medianità o di una particolare sensibilità, porta con sé una storia fatta di incontri, dubbi e scelte. In Altrove mi interessa conoscere quel percorso attraverso la sua voce. Come hai iniziato a riconoscere ciò che sentivi? A chi ne hai parlato? Che cosa è cambiato nel rapporto con gli altri? La conversazione parte dalla tua esperienza personale, senza chiederti di trasformarla in una dimostrazione o in una risposta definitiva.'],
+['Chi può proporsi',
+'Puoi candidarti se vivi queste esperienze nella tua quotidianità o se fanno parte di un’attività professionale. Vorrei capire come descrivi il tuo lavoro, quali confini ti dai e come rispetti chi si rivolge a te. Non basta un’etichetta per raccontare una persona. Anche i passaggi difficili, i ripensamenti e il modo in cui affronti le domande possono aiutare chi ascolta a comprendere meglio il tuo percorso e il linguaggio che usi.'],
+['Un primo racconto essenziale',
+'Nel modulo scegli il tema più vicino alla tua storia e spiega perché vorresti parlarne. Non serve una biografia completa: puoi partire da un episodio o da una domanda importante. Evita nomi, recapiti e dettagli riconoscibili delle persone che hai incontrato nella tua attività. I racconti legati al lutto o alla salute richiedono particolare delicatezza. Puoi descrivere il tuo approccio senza esporre la vita privata di chi ti ha dato fiducia.'],
+['Come ci conosciamo',
+'Il modulo prepara un messaggio che puoi rileggere e inviare su WhatsApp. La candidatura mi permette di capire il tema e di valutare se approfondirlo. Se ti ricontatto, parleremo delle domande possibili, del taglio della conversazione e di ciò che preferisci non affrontare. La selezione tiene conto della storia, del rispetto verso il pubblico e della coerenza con il percorso editoriale del podcast. Non è un calendario di presenze automatiche.'],
+['La responsabilità delle parole',
+'Altrove ospita testimonianze, non promesse di risultati. Non trovano spazio garanzie di guarigione, pressioni su chi vive un lutto o affermazioni che possano allontanare qualcuno da un aiuto qualificato. Una convinzione personale può essere raccontata come tale, lasciando a chi ascolta la libertà di farsi domande. Il rispetto riguarda anche il modo di presentare un’attività: niente urgenze costruite, paura o certezze assolute rivolte a persone in un momento fragile.'],
+['Una conversazione preparata insieme',
+'Se il tuo percorso sarà adatto a una puntata, definiremo personalmente le modalità e gli argomenti. Prima della registrazione potrai chiarire i tuoi limiti e capire come verrà utilizzata la conversazione. Il consenso iniziale serve a valutare la candidatura e a ricontattarti; l’eventuale pubblicazione richiede un passaggio distinto. Ascoltare significa anche lasciare spazio a un dubbio, fermarsi su una parola e accettare che non tutto debba trovare una conclusione.']],
+'faq' => [['Posso candidarmi se non svolgo un’attività professionale?',
+'Sì. Mi interessano anche percorsi personali e testimonianze che non fanno parte di un lavoro.'],
+['Devo fare una dimostrazione durante la puntata?',
+'La candidatura riguarda il racconto del tuo percorso. Il contenuto di un’eventuale conversazione si concorda prima.'],
+['Posso citare le persone che seguo?',
+'Evita nomi e dettagli che rendono riconoscibili altre persone. La loro riservatezza viene prima del racconto.'],
+['Il podcast garantisce le capacità degli ospiti?',
+'No. Le puntate presentano testimonianze e punti di vista personali, senza certificazioni o garanzie di risultati.']]];
+
