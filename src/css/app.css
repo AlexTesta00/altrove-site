@@ -290,13 +290,14 @@ a{color:var(--color-peach)}a:hover{color:var(--color-peach-hover)}
 .fw b{font-weight:400;letter-spacing:.22em}
 .fl{display:flex;flex-wrap:wrap;gap:var(--size-8) var(--size-20);margin-top:var(--size-16)}
 .legal{margin:var(--size-16) 0 0}
-.creator{display:flex;align-items:flex-start;gap:var(--size-24);margin-top:var(--size-40);padding-top:var(--size-32);border-top:var(--size-1) solid var(--color-tone-19)}
+.creator-wrap{position:relative;z-index:1;max-width:var(--size-1100);margin:var(--size-40) auto 0;padding-inline:var(--size-20)}
+.creator{display:flex;align-items:flex-start;gap:var(--size-24);padding-top:var(--size-32);border-top:var(--size-1) solid var(--color-tone-19)}
 .creator-portrait{display:block;flex:none;width:var(--size-80);height:var(--size-80)}
 .creator-portrait img{display:block;width:100%;height:100%;object-fit:cover;border-radius:50%}
 .creator h2{margin:0;color:var(--color-cream);font-size:var(--size-24);line-height:1.3}
 .creator h2 a{display:inline;min-height:0;text-decoration:underline;text-decoration-thickness:var(--size-1)}
 .creator p{max-width:55ch;margin:var(--size-12) 0 var(--size-4);font-size:var(--size-18);color:var(--color-text-secondary)}
-.creator-link{gap:var(--size-8)}
+.creator-link{display:inline-flex;align-items:center;min-height:var(--size-44);gap:var(--size-8);font-size:var(--size-15)}
 .policy-links{padding:0;list-style:none;margin:var(--size-16) 0 0}
 .policy-links a{display:inline-flex;align-items:center;min-height:var(--size-44);overflow-wrap:anywhere}
 .privacy-control{border:0;padding:0;min-height:var(--size-44);background:transparent;color:var(--color-peach);font:inherit;text-decoration:underline;cursor:pointer}
@@ -307,6 +308,7 @@ a{color:var(--color-peach)}a:hover{color:var(--color-peach-hover)}
 .video-consent-actions{display:flex;flex-wrap:wrap;gap:var(--size-12);margin-block:var(--size-16)}
 .video-consent-actions button{flex:1;justify-content:center;width:auto;min-height:var(--size-48);padding:var(--size-12) var(--size-16);font-family:inherit;font-size:var(--size-16);cursor:pointer}
 @media(max-width:480px){.creator{flex-direction:column;gap:var(--size-16)}}
+@media(min-width:900px){.creator-wrap{padding-inline:var(--size-24)}}
 .sh .cta{margin-top:var(--size-24)}
 .ytg{display:grid;gap:var(--size-24);margin-top:var(--size-28)}
 .ytf{display:block;color:var(--color-cream);text-decoration:none}
