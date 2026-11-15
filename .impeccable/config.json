@@ -56,6 +56,78 @@
         ],
         "createdAt": "2026-11-14T17:38:16.207Z",
         "reason": "Claude: scala del sintonizzatore usata come barra di avanzamento del form, elemento firma della direzione A, non decorazione"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Alba.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:41:36.352Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; i loro font sono voluti e non vanno nel sito, che usa la variante A"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Arcani.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:41:36.605Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; i loro font sono voluti e non vanno nel sito, che usa la variante A"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Alba.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:07.210Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Alba.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:07.371Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Alba.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:07.541Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
+      },
+      {
+        "rule": "design-system-color",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Arcani.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:07.722Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
+      },
+      {
+        "rule": "design-system-font-size",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Arcani.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:07.900Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
+      },
+      {
+        "rule": "design-system-radius",
+        "value": "*",
+        "files": [
+          "design/canvas/project/Arcani.dc.html"
+        ],
+        "createdAt": "2026-11-15T08:42:08.069Z",
+        "reason": "Claude: varianti B e C scartate, restano sul canvas solo come archivio della scelta; il loro sistema visivo è diverso apposta e non va nel sito"
       }
     ]
   }
