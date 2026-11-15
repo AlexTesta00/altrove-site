@@ -59,7 +59,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
         assert.match(response.headers.get('content-security-policy'),/frame-ancestors 'none'/);
         assert.equal(response.headers.get('x-content-type-options'),'nosniff');
         if(['/grazie/','/proposte/'].includes(path))assert.match(html,/noindex, follow/);
-        assert.doesNotMatch(html,/200 €|250 €|350 €/);
+        assert.doesNotMatch(html,/250 €|300 €|400 €/);
       }
       const sitemapResponse=await fetch(base+'/sitemap.xml');
       assert.equal(sitemapResponse.status,200);
@@ -104,14 +104,14 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       assert.equal(result.whatsapp,undefined);
       const cookie=nextCookie(response,session.cookie);
       const step=await plans(cookie);
-      assert.match(step.html,/200 €/);assert.match(step.html,/250 €/);assert.match(step.html,/350 €/);
+      assert.match(step.html,/250 €/);assert.match(step.html,/300 €/);assert.match(step.html,/400 €/);
       assert.doesNotMatch(step.html,/name="piano"[^>]*checked/);
       assert.equal((await fetch(base+'/grazie/',{headers:{Cookie:cookie},redirect:'manual'})).headers.get('location'),'/proposte/');
       const planResponse=await choosePlan(step,{prezzo:'1',nome:'Intruso',contenuti:'Tutto gratis'});
       assert.equal(planResponse.status,200);
       assert.equal((await planResponse.json()).redirect,'/grazie/');
       const preview=await(await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
-      assert.match(preview,/Maria Prova/);assert.match(preview,/Completo · 250 € \(importo finale\)/);
+      assert.match(preview,/Maria Prova/);assert.match(preview,/Completo · 300 € \(importo finale\)/);
       assert.match(preview,/Puntata completa su YouTube e Spotify/);assert.doesNotMatch(preview,/Intruso|Tutto gratis/);
       assert.ok(!response.headers.get('location'));
     });
@@ -127,7 +127,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       const preview=await (await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
       assert.match(preview,/Maria Prova/);
       assert.match(preview,/Apri WhatsApp e invia/);
-      assert.match(preview,/Essenziale · 200 €/);
+      assert.match(preview,/Essenziale · 250 €/);
     });
     await t.test('Limite tentativi: blocco dal quarto, quindi anche il sesto',async()=>{
       const session=await form();
@@ -158,7 +158,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       const preview=await(await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
       assert.match(preview,/Copia il messaggio completo/);
       assert.ok(preview.includes(longStory.trim()));
-      assert.match(preview,/Amplifica · 350 €/);assert.match(preview,/3 Reel totali/);
+      assert.match(preview,/Amplifica · 400 €/);assert.match(preview,/3 Reel totali/);
       assert.match(preview,/href="https:\/\/wa.me\/393272433925\?text="/);
       const refreshed=await form('/candidati/',cookie);
       assert.equal((await submit(refreshed,{esperienza:longStory+'x'})).status,422);
@@ -189,7 +189,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       assert.match((await plans(cookie)).html,/Scegli uno dei tre piani/);
       assert.equal((await choosePlan(step,{extra:'x'.repeat(4200)})).status,413);
       assert.equal((await fetch(base+'/api/piano',{method:'POST',headers:{Origin:base,'Content-Type':'application/json'},body:'{}'})).status,415);
-      for(const [id,name,price] of [['essenziale','Essenziale',200],['completo','Completo',250],['amplifica','Amplifica',350]]){
+      for(const [id,name,price] of [['essenziale','Essenziale',250],['completo','Completo',300],['amplifica','Amplifica',400]]){
         step=await plans(cookie);
         assert.equal((await choosePlan(step,{piano:id})).status,200);
         const html=await(await fetch(base+'/grazie/',{headers:{Cookie:cookie}})).text();
@@ -202,7 +202,7 @@ test('HTTP: pagine, sicurezza e candidatura WhatsApp', async t=>{
       await writeFile(file,expired);
       assert.equal((await choosePlan(await plans(cookie),{csrf:restored.csrf})).status,410);
       const expiredHtml=(await plans(cookie)).html;
-      assert.doesNotMatch(expiredHtml,/200 €|250 €|350 €|Maria Prova/);
+      assert.doesNotMatch(expiredHtml,/250 €|300 €|400 €|Maria Prova/);
       assert.match(expiredHtml,/sessione potrebbe essere scaduta/);
     });
   } finally {

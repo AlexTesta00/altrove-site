@@ -16,7 +16,7 @@ unset($_SESSION['plan_error']);
 <input type="hidden" name="csrf" value="<?= e(Altrove\Csrf::token()) ?>">
 <input type="hidden" name="candidatura" value="<?= e($application['id']) ?>">
 <fieldset class="plan-fieldset" aria-describedby="plan-amounts plan-error">
-<legend class="serif">Quale proposta fa per te?</legend>
+<legend class="serif">Come vuoi dar voce alla tua storia?</legend>
 <p id="plan-amounts" class="plan-amounts">Importi finali, per singola collaborazione.</p>
 <p id="plan-error" class="field-error" role="status"<?= $planError === '' ? ' hidden' : '' ?>><?= e($planError) ?></p>
 <div class="plan-options">
