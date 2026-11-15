@@ -41,8 +41,8 @@ function start_session(array $config): void {
     session_set_cookie_params(['lifetime' => 0, 'path' => '/', 'secure' => !$config['local'], 'httponly' => true, 'samesite' => 'Lax']);
     session_start();
     if (isset($_SESSION['touched']) && $_SESSION['touched'] < time() - 7200) { $_SESSION = []; session_regenerate_id(true); }
-    foreach (['handoff', 'flash'] as $temporary) {
-        if (isset($_SESSION[$temporary]) && ($_SESSION[$temporary]['expires'] ?? 0) < time()) unset($_SESSION[$temporary]);
+    foreach (['handoff', 'flash', 'application', 'plan_error'] as $temporary) {
+        if (isset($_SESSION[$temporary]) && ($_SESSION[$temporary]['expires'] ?? 0) <= time()) unset($_SESSION[$temporary]);
     }
     $_SESSION['touched'] = time();
 }

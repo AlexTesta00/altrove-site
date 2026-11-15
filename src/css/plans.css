@@ -1,0 +1,42 @@
+.cand.plans-page{max-width:var(--size-1100);margin-inline:auto}
+.proposal-progress{display:flex;flex-wrap:wrap;gap:var(--size-12) var(--size-24);list-style:none;padding:0;margin:0 0 var(--size-32);font-size:var(--size-15);color:var(--color-lavender)}
+.proposal-progress li[aria-current]{color:var(--color-peach)}
+.proposal-progress a{display:inline-flex;align-items:center;min-height:var(--size-44);text-underline-offset:var(--size-4)}
+.proposal-progress li{display:flex;align-items:center;min-height:var(--size-44)}
+.proposal-intro{max-width:var(--size-760)}
+.proposal-intro h1{font-size:clamp(var(--size-32),8vw,var(--size-56));line-height:1.08;margin:0;text-wrap:balance}
+.proposal-intro p{color:var(--color-text-secondary);margin:var(--size-24) 0 0;font-size:var(--size-18)}
+.plan-fieldset{margin-top:var(--size-48)}
+.plan-fieldset>legend{font-size:clamp(var(--size-28),5vw,var(--size-40));line-height:1.15;padding:0}
+.plan-amounts{color:var(--color-lavender);margin:var(--size-12) 0 var(--size-24)}
+.plan-options{display:grid;gap:var(--size-20)}
+.plan-option{display:flex;flex-direction:column;gap:var(--size-24);padding:var(--size-24);border:var(--size-1) solid var(--color-tone-28);border-radius:var(--size-16);background:var(--color-panel);cursor:pointer;min-width:0;transition:border-color var(--duration-300),background var(--duration-300)}
+.plan-option:hover{border-color:var(--color-peach)}
+.plan-option:has(input:focus-visible){outline:var(--size-2) solid var(--color-peach);outline-offset:var(--size-4)}
+.plan-option:has(input:checked){background:var(--color-selected);border-color:var(--color-peach)}
+.plan-heading{display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:var(--size-8) var(--size-16);line-height:1.15}
+.plan-name{font-size:var(--size-28)}
+.plan-price{font-size:var(--size-32);font-weight:600;white-space:nowrap;font-variant-numeric:tabular-nums}
+.plan-includes{display:grid;gap:var(--size-12);font-size:var(--size-18);font-weight:600;line-height:1.45}
+.plan-purpose{font-size:var(--size-18);color:var(--color-text-secondary);line-height:1.5}
+.plan-difference{font-size:var(--size-16);color:var(--color-lavender);margin-top:auto}
+.plan-select{display:flex;align-items:center;gap:var(--size-12);min-height:var(--size-52);padding-top:var(--size-16);border-top:var(--size-1) solid var(--color-tone-28);font-weight:600;font-size:var(--size-17)}
+.plan-select input{width:var(--size-24);height:var(--size-24);margin:0;flex:none;accent-color:var(--color-peach)}
+.plan-selected{display:none}
+.plan-option:has(input:checked) .plan-idle{display:none}
+.plan-option:has(input:checked) .plan-selected{display:inline}
+.plan-option.plan-recommended{background:var(--color-peach);color:var(--color-night);border-color:var(--color-peach)}
+.plan-recommended .plan-purpose,.plan-recommended .plan-difference{color:var(--color-night)}
+.plan-recommended .plan-select{border-color:var(--color-night)}
+.plan-recommended input{accent-color:var(--color-night)}
+.plan-recommended:has(input:checked){background:var(--color-cream);border-color:var(--color-cream)}
+.plan-confirm{margin:var(--size-48) auto 0;max-width:var(--size-760);padding-top:var(--size-32);border-top:var(--size-1) solid var(--color-tone-28)}
+.plan-confirm h2{margin:0;font-size:clamp(var(--size-28),5vw,var(--size-40));line-height:1.15;text-wrap:balance}
+.plan-confirm>p:not(.small){font-size:var(--size-18);color:var(--color-text-secondary)}
+.plan-confirm .plan-current{font-weight:600;color:var(--color-peach)}
+.plan-confirm .cta{margin-top:var(--size-8)}
+.plan-back{display:flex;align-items:center;gap:var(--size-8);min-height:var(--size-52);margin-top:var(--size-16);text-underline-offset:var(--size-4)}
+.plan-back .ic{flex:none}
+.done>.home{display:flex;justify-content:center;width:fit-content;margin-inline:auto}
+@media(min-width:900px){.plan-options{grid-template-columns:repeat(3,minmax(0,1fr))}.proposal-progress{margin-bottom:var(--size-40)}}
+@media(max-width:480px){.plan-option{padding:var(--size-20)}.plan-confirm .cta{width:100%;justify-content:center}}

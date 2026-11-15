@@ -1,4 +1,5 @@
 @import "tailwindcss" source(none);
+@import "./plans.css";
 @source "../../app/templates";
 @source "../js";
 @theme static { --size-meteor: 140px; }

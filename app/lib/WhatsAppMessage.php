@@ -13,6 +13,7 @@ final class WhatsAppMessage {
             ['title'=>'🎙️ Chi sono','value'=>$roles[$data['veste']]??$roles['esperienza']],
             ['title'=>$emoji.' Tema','value'=>$theme],
             ['title'=>'📖 La mia storia','value'=>$data['esperienza']],
+            ['title'=>'📋 Piano scelto','value'=>ParticipationPlans::message($data['piano'] ?? null)],
             ['title'=>'📞 Telefono','value'=>$data['telefono']],
             ['title'=>'','value'=>Privacy::CONSENT . ' Informativa: ' . Privacy::VERSION . '.'],
             ['title'=>'','value'=>"Grazie per l'ascolto ✨"],

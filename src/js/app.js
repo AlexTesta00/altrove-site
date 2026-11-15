@@ -2,9 +2,11 @@ import { initForm } from './form.js';
 import { track } from './analytics.js';
 import { initMotion } from './motion.js';
 import { initVideos } from './videos.js';
+import { initPlans } from './plans.js';
 initForm();
 initMotion();
 initVideos();
+initPlans();
 document.querySelectorAll('[data-whatsapp]').forEach(link=>link.addEventListener('click',()=>track('whatsapp_click',{posizione:link.dataset.whatsapp})));
 const copyButton=document.querySelector('[data-copy-message]');
 if(copyButton){

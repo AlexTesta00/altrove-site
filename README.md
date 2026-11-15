@@ -4,7 +4,7 @@ Sito PHP di Alessia Ventura e Altrove Podcast, destinato ad **altrove.space**. R
 
 La decisione aggiornata dell’utente sostituisce l’invio email del prompt iniziale: il modulo prepara un messaggio per **WhatsApp**, indirizzato al numero configurato in ambiente. Chi si candida lo rilegge e preme **Invia dentro WhatsApp**. Il sito non può attestare la consegna del messaggio. Non usa SMTP, PHPMailer, servizi di invio automatico o database.
 
-Il design approvato “Linea aperta” usa Tenor Sans/Hanken Grotesk, un cielo animato e un sintonizzatore sui quattro temi. Il form vive su /candidati/; le altre pagine hanno la sezione di invito con i testi approvati, senza ripetere il modulo. I prezzi sono riservati alla proposta commerciale privata.
+Il design approvato “Linea aperta” usa Tenor Sans/Hanken Grotesk, un cielo animato e un sintonizzatore sui quattro temi. Il form vive su /candidati/; le altre pagine hanno la sezione di invito con i testi approvati, senza ripetere il modulo. I prezzi delle tre proposte approvate sono visibili soltanto nel passaggio successivo a una candidatura validata, su /proposte/, escluso dalla sitemap e non indicizzabile.
 
 ## Avvio locale
 
@@ -60,7 +60,7 @@ Il limite è **tre tentativi ogni dieci minuti e dieci nelle ventiquattro ore**,
 
 La storia ammette 4.000 codepoint Unicode; il limite di 64 KB del corpo comprende l’espansione URL-encoded, anche per caratteri multibyte ed emoji.
 
-Con JavaScript, cinque passi progressivi, errori per campo e regione live; dopo la validazione si apre il collegamento WhatsApp con il testo precompilato. Senza JavaScript, tutti i campi sono visibili e il POST risponde 303 a /grazie/, dove si può rileggere il testo e premere il collegamento WhatsApp. Nessun dato personale viene messo negli URL interni. Il collegamento **esterno** wa.me contiene necessariamente il messaggio e lo comunica a WhatsApp quando viene aperto: questo è spiegato prima dell’azione e in privacy.
+Con JavaScript, cinque passi progressivi, errori per campo e regione live. Dopo la validazione, /proposte/ presenta Essenziale (200 euro: YouTube e 1 Reel), Completo (250 euro: YouTube, Spotify e 1 Reel) e Amplifica (350 euro: YouTube, Spotify e 3 Reel), importi finali. Nessun piano è preselezionato. Il POST /api/piano accetta solo gli identificativi del catalogo server e verifica sessione, origine, CSRF e identificativo della candidatura; importi o contenuti inviati dal browser sono ignorati. Si passa quindi a /grazie/ per rileggere risposte e piano prima di aprire WhatsApp. Senza JavaScript il flusso usa moduli nativi e redirect 303. Si può tornare alle risposte o cambiare il piano; la scelta non effettua pagamenti né garantisce la partecipazione. I dati e l’anteprima scadono quindici minuti dopo la validazione iniziale, senza prolungare il termine cambiando piano. La copia cifrata facoltativa viene creata solo dopo la scelta del piano. Nessun dato personale viene messo negli URL interni. Il collegamento **esterno** wa.me contiene necessariamente il messaggio e lo comunica a WhatsApp quando viene aperto: questo è spiegato prima dell’azione e in privacy.
 
 Turnstile richiede JavaScript: se attivato, il form informa il visitatore che deve abilitarlo per proseguire. Le chiavi sono entrambe necessarie. La risposta viene verificata lato server, inclusi hostname e action=candidatura. Non sono installate chiavi di test nel repository.
 
@@ -105,7 +105,7 @@ La build prepara i font latin/latin-ext, le fotografie in 4:5 e 1:1 AVIF/WebP, u
 
 Il messaggio WhatsApp contiene la storia completa. Oltre la soglia prudenziale di lunghezza del collegamento, la pagina finale propone copia e incolla, mantenendo l’intero testo. Il limite è quattromila codepoint Unicode; il body HTTP ammette l’espansione dovuta alla codifica del modulo. Non esistono link WhatsApp nelle altre pagine.
 
-Umami è disattivato di default. Gli eventi ammessi sono form_inizio, form_inviato, whatsapp_click e puntata_play. Il nome storico form_inviato misura la **preparazione**, non la consegna su WhatsApp. Gli eventi non contengono dati della candidatura. Per le statistiche senza banner va verificata la configurazione concreta del servizio e l’eventuale fornitore.
+Umami è disattivato di default. Gli eventi ammessi sono form_inizio, form_inviato, whatsapp_click e puntata_play. Il nome storico form_inviato misura la **validazione del modulo e il passaggio ai piani**, non la consegna su WhatsApp. Gli eventi non contengono dati della candidatura. Per le statistiche senza banner va verificata la configurazione concreta del servizio e l’eventuale fornitore.
 
 ## Deploy FTP su Hostinger
 

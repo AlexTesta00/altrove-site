@@ -28,16 +28,19 @@
 <?php elseif($id==='candidati'): ?>
 <h1 class="serif h1">Partecipa ad <span class="mute">ALTROVE Podcast</span></h1><div class="pol"><?php foreach($common['candidatiIntro'] as $paragraph): ?><p><?= e($paragraph) ?></p><?php endforeach; ?></div><h2 class="serif ask">Hai una storia da raccontare? <span class="mute">Presentaci la tua candidatura.</span></h2>
 <?php require __DIR__.'/../partials/form.php'; ?>
+<?php elseif($id==='proposte'): ?>
+<?php require __DIR__.'/../partials/plans.php'; ?>
 <?php elseif($id==='grazie'): ?>
 <?php $handoff=$_SESSION['handoff']??[]; if(($handoff['expires']??0)<time()){unset($_SESSION['handoff']);$handoff=[];} ?>
 <section class="panel done"><span class="lamp" aria-hidden="true"></span><h1 class="serif q">Ultimo passo: <span class="mute">mandamela su WhatsApp.</span></h1>
 <?php if(!empty($handoff['text'])): ?>
-<p><?= !empty($handoff['copy_required'])?'La tua storia è lunga: copiala per intero e incollala in WhatsApp. Non ne lasciamo indietro una parola.':'Ho preparato il messaggio con le tue risposte. Apri WhatsApp e premi Invia per farmelo arrivare.' ?></p>
+<p><?= !empty($handoff['copy_required'])?'Il messaggio è lungo: copialo per intero e incollalo in WhatsApp. Include la tua storia e il piano scelto.':'Ho preparato il messaggio con le tue risposte e il piano scelto. Rileggilo, apri WhatsApp e premi Invia per farmelo arrivare.' ?></p>
 <div class="bub" aria-label="Anteprima del messaggio WhatsApp"><?php foreach($handoff['blocks']??[['title'=>'','value'=>$handoff['text']]] as $block): ?><div class="bk"><?php if($block['title']!==''): ?><strong class="bh"><?= e($block['title']) ?></strong><?php endif; ?><?php if($block['value']!==''): ?><span class="bv"><?= e($block['value']) ?></span><?php endif; ?></div><?php endforeach; ?></div>
 <div class="copy-message"><label class="lbl" for="messaggio-completo">Il messaggio completo, pronto da copiare</label><textarea class="fld" id="messaggio-completo" readonly rows="5"><?= e($handoff['text']) ?></textarea><button class="ghost" type="button" data-copy-message hidden><?= icon('copy') ?>Copia il messaggio completo</button><p class="small" data-copy-status role="status" aria-live="polite"></p></div>
 <a class="cta" data-whatsapp="candidatura" href="<?= e(whatsapp($config,!empty($handoff['copy_required'])?'':$handoff['text'])) ?>"><span class="disc"><?= icon('whatsapp') ?></span>Apri WhatsApp e invia</a>
 <?php if(!empty($handoff['copy_required'])): ?><p class="small">Dopo aver aperto WhatsApp, incolla il messaggio che hai copiato e premi Invia.</p><?php endif; ?>
-<p class="small">Il messaggio resta disponibile per quindici minuti. Aprendo il collegamento, condividi i dati con WhatsApp.</p>
+<p class="small">La candidatura resta disponibile per quindici minuti dalla compilazione. Aprendo il collegamento, condividi i dati con WhatsApp.</p>
+<?php if(isset($_SESSION['application'])): ?><a class="home" href="/proposte/">Cambia il piano scelto</a><?php endif; ?>
 <?php else: ?><p>Per proteggere i tuoi dati, il messaggio non è più disponibile. Puoi ripartire dal modulo.</p><a class="cta" href="/candidati/"><span class="disc"><?= icon('arrow') ?></span>Torna alla candidatura</a><?php endif; ?>
 <a class="home" href="/">Torna ad Altrove</a></section>
 <?php elseif(isset($page['sections'])): ?>

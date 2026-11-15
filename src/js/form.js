@@ -98,22 +98,17 @@ export function initForm(){
     event.preventDefault();if(busy||prepared)return;
     if(current<steps.length-1){const invalid=valid(steps[current],true);if(!invalid)show(current+1);else invalid.focus();return;}
     for(let i=0;i<steps.length;i++){const invalid=valid(steps[i],true);if(invalid){show(i,false);invalid.focus();return;}}
-    busy=true;update();summary.hidden=true;sending.textContent='Sto preparando il messaggio per WhatsApp…';
+    busy=true;update();summary.hidden=true;sending.textContent='Sto preparando la scelta del piano…';
     const controller=new AbortController();const timeout=setTimeout(()=>controller.abort(),25000);
     try{
       const response=await fetch(form.action,{method:'POST',body:new URLSearchParams(new FormData(form)),headers:{Accept:'application/json'},credentials:'same-origin',signal:controller.signal});
       const result=await response.json();
       if(!response.ok||!result.ok){
-        showErrors(result.errors||{form:'Non riesco a preparare il messaggio. Riprova tra poco.'});
+        showErrors(result.errors||{form:'Non riesco a proseguire ai piani. Riprova tra poco.'});
         window.turnstile?.reset();sending.textContent='';
       }else{
         prepared=true;track('form_inviato');
-        if(result.copyRequired){window.location.assign('/grazie/');return;}
-        if(result.whatsapp&&/^https:\/\/wa\.me\/[1-9][0-9]{7,14}\?text=/.test(result.whatsapp)){
-          track('whatsapp_click',{posizione:'modulo'});window.location.assign(result.whatsapp);
-          sending.textContent='Apri WhatsApp e premi Invia per completare la candidatura.';
-          const fallback=document.createElement('a');fallback.href='/grazie/';fallback.textContent='WhatsApp non si è aperto? Rileggi e apri il messaggio';sending.append(' ',fallback);
-        }else window.location.assign('/grazie/');
+        window.location.assign('/proposte/');
       }
     }catch{showErrors({form:'La connessione si è interrotta. I dati sono ancora nel modulo: riprova tra poco.'});sending.textContent='';}
     finally{clearTimeout(timeout);busy=false;update();}
