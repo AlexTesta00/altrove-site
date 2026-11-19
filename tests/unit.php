@@ -19,7 +19,7 @@ try {
     $assert(str_contains($message['text'],Altrove\Privacy::VERSION),'Versione informativa assente dal messaggio');
     $assert(!str_contains($message['text'],'appena inviato'),'Il messaggio dichiara un invio inesistente');
     $assert($message['blocks'][4]['value']==='Esperienze di pre-morte','Etichetta tema non leggibile');
-    foreach (['essenziale'=>[250,1,false],'completo'=>[300,1,true],'amplifica'=>[400,3,true]] as $id=>[$price,$reels,$spotify]) {
+    foreach (['essenziale'=>[300,1,false],'completo'=>[350,1,true],'amplifica'=>[450,3,true]] as $id=>[$price,$reels,$spotify]) {
         $planMessage=Altrove\WhatsAppMessage::build(array_replace($data,['piano'=>$id,'prezzo'=>1,'proposta'=>['nome'=>'Inventato']]));
         $assert(str_contains($planMessage['text'],$price.' € (importo finale)'),'Importo del catalogo non incluso');
         $assert(str_contains($planMessage['text'],$reels.' Reel'),'Numero di Reel errato');
